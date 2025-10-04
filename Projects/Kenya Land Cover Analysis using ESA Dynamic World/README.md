@@ -23,6 +23,8 @@ All analysis notebooks live under **`Projects/`** so the repo root stays clean.
 
 ![alt text](image.png)
 ![alt text](image-1.png)
+> Land Cover from 2020-2024
+![alt text](image-2.png)
 > File names may vary depending on parameters you run.
 
 ## Links
