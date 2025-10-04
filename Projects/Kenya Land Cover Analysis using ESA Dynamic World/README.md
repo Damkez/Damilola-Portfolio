@@ -22,6 +22,7 @@ All analysis notebooks live under **`Projects/`** so the repo root stays clean.
 ## Results (examples)
 
 ![alt text](image.png)
+![alt text](image-1.png)
 > File names may vary depending on parameters you run.
 
 ## Links
