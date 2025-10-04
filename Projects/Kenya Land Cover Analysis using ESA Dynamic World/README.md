@@ -20,11 +20,14 @@ All analysis notebooks live under **`Projects/`** so the repo root stays clean.
 5. **(Optional)** County zonal stats (`GAUL/2015/level1`) and change/transition tables between years.
 
 ## Results (examples)
-
+> Land Cover map for 2020 & 2024
 ![alt text](image.png)
+> Land Cover graph for 2020 & 2024
 ![alt text](image-1.png)
 > Land Cover from 2020-2024
 ![alt text](image-2.png)
+> Land Cover graph for 2020-2024
+![alt text](image-3.png)
 > File names may vary depending on parameters you run.
 
 ## Links
