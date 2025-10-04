@@ -1,5 +1,6 @@
 # Overview
-This repository hosts my geospatial analytics portfolio. The current focus is a Google Earth Engine (GEE) workflow analyzing ESA Dynamic World land use/land cover (LUC) in **Kenya** for **2020–2024**. It includes annual composites, side-by-side map comparisons (2020 vs 2024), fast area statistics (hectares) by class, 2×2 map/chart panels, and optional county-level and change/transition analyses.
+
+Google Earth Engine (GEE) workflow analyzing ESA Dynamic World land use/land cover (LUC) in **Kenya** for **2020–2024**. It includes annual composites, side-by-side map comparisons (2020 vs 2024), fast area statistics (hectares) by class, 2×2 map/chart panels, and optional county-level and change/transition analyses.
 
 All analysis notebooks live under **`Projects/`** so the repo root stays clean.
 
