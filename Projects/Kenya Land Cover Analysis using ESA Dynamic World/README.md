@@ -20,11 +20,8 @@ All analysis notebooks live under **`Projects/`** so the repo root stays clean.
 5. **(Optional)** County zonal stats (`GAUL/2015/level1`) and change/transition tables between years.
 
 ## Results (examples)
-- `Projects/outputs/kenya_dw_annual_area_ha_2020_2024.csv`
-- `Projects/outputs/kenya_dw_area_ha_2020_vs_2024.csv`
-- `Projects/outputs/kenya_dw_area_ha_2020_2021_2023_2024.csv`
-- `Projects/outputs/kenya_dw_transition_2020_to_2024.csv`
 
+![alt text](image.png)
 > File names may vary depending on parameters you run.
 
 ## Links
