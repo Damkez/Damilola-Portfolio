@@ -17,7 +17,7 @@ Google Earth Engine (GEE) workflow analyzing ESA Dynamic World land use/land cov
 4. **Stats**: Grouped reducer (`sum(pixelArea)` by `label`) → **hectares per class**; side-by-side bar charts (shared y-axis).
 5. **(Optional)** County zonal stats (`GAUL/2015/level1`) and change/transition tables between years.
 
-## Results (examples)
+## Results
 > Land Cover map for 2020 & 2024
 ![alt text](image.png)
 > Land Cover graph for 2020 & 2024
