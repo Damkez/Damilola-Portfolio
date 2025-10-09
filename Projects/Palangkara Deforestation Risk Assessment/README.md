@@ -56,9 +56,9 @@ Scaling used (per C02 L2):
 - **Interactive maps**:
   - `SR_1990`, `SR_2005`, `SR_2020` (false-color B5/B6/B2)
   ![alt text](SR_2005_2020.png)
-  - `VI_YYYY` layers  
+  - `Vegetation Index(VI) for Year 1990, 2005, 2020`
   ![alt text](VI_2005_2020.png)
-  - `Forest_YYYY` (green mask)  
+  - `Forest` (green mask)  
   ![alt text](Forest_2005_2020.png)
   - `Deforestation 1990–2005` (red) and `2005–2020` (orange)  
   ![alt text](Deforestation_2005_2020.png)
