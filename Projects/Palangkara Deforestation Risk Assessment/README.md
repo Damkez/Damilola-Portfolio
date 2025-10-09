@@ -162,8 +162,6 @@ risk = (forest_raster.convolve(k)
 
 - **Landsat data**: USGS/NASA, public domain  
 - **GAUL boundaries**: FAO GAUL 2015 (subject to FAO terms)  
-- **Notebook code**: Provided for your project; please cite Landsat/USGS and FAO GAUL in outputs
 
 
-## Results
 
