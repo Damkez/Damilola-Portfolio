@@ -33,63 +33,16 @@ Scaling used (per C02 L2):
 
 ##  Prerequisites
 
-- **Google Earth Engine account** (free to sign up)  
+- **Google Earth Engine account** 
 - **Python 3.9+**, **VS Code**, **Jupyter** extension  
 - Python packages (auto-installed by the notebook if missing):
   - `earthengine-api`, `geemap`, `pandas`, `matplotlib`
 
 ---
 
-##  Files you may have
 
-- `Sabah_Deforestation_Risk.ipynb` — full analysis notebook  
-- `Sabah_Deforestation_Risk_lowmem.ipynb` (or `Sabah_Deforestation_Risk_LOWMEM.ipynb`) — memory-friendly version  
-- `sabah_deforestation_lowmem.py` — Python script fallback (same logic as lowmem notebook)
 
-**Use the low-memory variant** if the full notebook throws “User memory limit exceeded”.
-
----
-
-##  Quick start (VS Code)
-
-1. Open the `.ipynb` in VS Code.  
-2. Select your Python environment (top-right kernel picker).  
-3. Run the first cell — on first use, **EE will prompt** you to authenticate in the browser.  
-4. Run cells in order.  
-5. Interactive maps appear inline; tables and charts render below.
-
----
-
-##  Setting the AOI (your polygon)
-
-Replace (or set) the ROI at the top of the notebook:
-
-```python
-import ee
-roi = ee.Geometry.Polygon([
-  [ [113.69001648196563, -1.8770593752211775],
-    [113.69001648196563, -2.401289120996008],
-    [114.19676086673125, -2.401289120996008],
-    [114.19676086673125, -1.8770593752211775] ]
-])
-```
-
-### Center/zoom the map to the ROI
-Use any of these right after you define `roi`:
-
-```python
-m = geemap.Map()
-m.centerObject(roi, 10)     # centers + sets zoom
-# or:
-# m.zoom_to_layer(roi)
-m.addLayer(roi, {"color":"red"}, "ROI")
-m
-```
-
----
-
-##  Parameters you can tweak
-
+##  Parameters 
 - **Years:** `year_list = [1990, 2005, 2020]`  
 - **Date window:** currently ±1 year around each target year  
 - **Forest threshold:** `VI > 0.7` — tune this (e.g., 0.6–0.8) and validate visually  
@@ -98,28 +51,32 @@ m
 
 ---
 
-##  What you’ll see (outputs)
+##   Results
 
 - **Interactive maps**:
   - `SR_1990`, `SR_2005`, `SR_2020` (false-color B5/B6/B2)
+  ![alt text](SR_2005_2020.png)
   - `VI_YYYY` layers  
+  ![alt text](VI_2005_2020.png)
   - `Forest_YYYY` (green mask)  
+  ![alt text](Forest_2005_2020.png)
   - `Deforestation 1990–2005` (red) and `2005–2020` (orange)  
+  ![alt text](Deforestation_2005_2020.png)
   - **Risk Equal Interval** (0–30, green→yellow→red→purple) + legend
-
+![alt text](DRA_map.png)
 - **Tables**:
   - Forest area by year (ha)
   - Deforestation area by period (ha)
 
 - **Charts**:
   - Bar chart of forest area by year
-  - Histogram of risk classes (sampled)
+  ![alt text](Forest_Area.png)
 
 ---
 
 ##  Exporting GeoTIFFs 
 
-### Option A: Export from **geemap** (notebook, to local)
+###  Export from **geemap** (notebook, to local)
 ```python
 from geemap import ee_export_image
 
@@ -152,13 +109,13 @@ Use the same pattern for `deforestation` layers or `riskEq`. For risk, export at
 ---
 
 
-### B) Threshold tuning / validation
+### Threshold tuning / validation
 - Try VI thresholds 0.6–0.8 and inspect forest edges  
 - Cross-check with known landcover (e.g., ESA CCI LC) for spot validation
 
 ---
 
-## 12) Method notes & assumptions
+##  Method notes & assumptions
 
 - **Compositing window**: ±1 year around each target year improves image count and cloud-free coverage.  
 - **Forest definition**: VI > 0.7 is conservative; adjust to context.  
@@ -176,15 +133,6 @@ Use the same pattern for `deforestation` layers or `riskEq`. For risk, export at
 
 ---
 
-##  Snippets you’ll likely reuse
-
-**Center map to your ROI**
-```python
-m = geemap.Map()
-m.centerObject(roi, 10)  # or: m.zoom_to_layer(roi)
-m.addLayer(roi, {"color":"red"}, "ROI")
-m
-```
 
 **Areas in hectares (memory-safe)**
 ```python
@@ -215,3 +163,7 @@ risk = (forest_raster.convolve(k)
 - **Landsat data**: USGS/NASA, public domain  
 - **GAUL boundaries**: FAO GAUL 2015 (subject to FAO terms)  
 - **Notebook code**: Provided for your project; please cite Landsat/USGS and FAO GAUL in outputs
+
+
+## Results
+
