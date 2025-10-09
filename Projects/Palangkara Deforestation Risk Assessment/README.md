@@ -1,4 +1,4 @@
-# README — Palangkara Deforestation & Risk Mapping (1990, 2005, 2020)
+# Palangkara Deforestation & Risk Mapping (1990, 2005, 2020)
 
 This guide walks you through creating a Landsat-based **deforestation** and **risk** analysis in **Google Earth Engine (EE)** using a **Jupyter notebook** (VS Code).
 
