@@ -14,7 +14,11 @@ Visualizes the total area (in hectares) for each land cover class (Trees, Crops,
 - **Annual Maps**: Displays land cover classification for any selected year.
 - **Change Detection**: Highlights specific pixels that have changed class between the start and end years, providing a spatial view of dynamic areas.
 
+![Land Cover Map](assets/land_cover_map.png)
+
 ### 3. Transition Matrix & Robust Insights
+![Transition Matrix Heatmap](assets/transition_heatmap.png)
+
 A detailed transition matrix quantifies exactly how much land has moved from one class to another. The analysis automatically generates a report on:
 - **Deforestation**: Tracking the conversion of forests to crops, bare ground, or built-up areas.
 - **Urbanization**: Measuring the expansion of built-up areas (cities, towns, infrastructure).
