@@ -10,6 +10,8 @@ The goal is to understand how land use patterns are shifting over time, with a s
 ### 1. Interactive Area Charts
 Visualizes the total area (in hectares) for each land cover class (Trees, Crops, Built Area, etc.) over the 5-year period. This allows for quick identification of major trends.
 
+![Area Chart](assets/area_chart.png)
+
 ### 2. Land Cover Maps & Change Detection
 - **Annual Maps**: Displays land cover classification for any selected year.
 - **Change Detection**: Highlights specific pixels that have changed class between the start and end years, providing a spatial view of dynamic areas.
@@ -68,11 +70,15 @@ A detailed transition matrix quantifies exactly how much land has moved from one
 | **Bare Ground** | 8,078,212 | 5,585,209 | -2,493,003 |
 | **Water** | 1,436,436 | 1,189,415 | -247,021 |
 
-### Top 5 Major Transitions
-| From Class (2020) | To Class (2024) | Area (ha) |
-| :--- | :--- | :--- |
-| Crops | Shrub & Scrub | 4,799,782 |
-| Shrub & Scrub | Trees | 3,722,577 |
-| Trees | Shrub & Scrub | 3,680,130 |
-| Shrub & Scrub | Crops | 2,964,141 |
-| Bare Ground | Shrub & Scrub | 2,844,125 |
+### Transition Matrix (2020 vs 2024)
+| Start \ End | Bare Ground | Built Area | Crops | Flooded vegetation | Grass | Shrub & Scrub | Snow & Ice | Trees | Water |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Bare Ground** | 3,771,756 | 113,784 | 1,183,524 | 26,569 | 34,043 | 2,844,125 | 7 | 50,677 | 53,692 |
+| **Built Area** | 4,608 | 2,316,575 | 14,680 | 333 | 132 | 56,933 | 5 | 92,810 | 1,792 |
+| **Crops** | 802,578 | 73,429 | 9,639,947 | 59,114 | 148,988 | 4,799,782 | 0 | 751,673 | 40,121 |
+| **Flooded veg** | 6,497 | 857 | 34,350 | 354,575 | 34,288 | 15,295 | 27 | 104,576 | 52,761 |
+| **Grass** | 6,748 | 117 | 54,892 | 24,409 | 169,253 | 35,426 | 0 | 32,339 | 9,817 |
+| **Shrub & Scrub** | 946,766 | 260,683 | 2,964,141 | 43,825 | 95,882 | 26,277,792 | 3 | 3,722,577 | 32,863 |
+| **Snow & Ice** | 1 | 1 | 1 | 4 | 0 | 2 | 0 | 6 | 1 |
+| **Trees** | 10,994 | 233,747 | 588,340 | 118,627 | 79,650 | 3,680,130 | 61 | 22,543,195 | 37,830 |
+| **Water** | 35,261 | 2,917 | 14,553 | 228,499 | 5,191 | 7,536 | 137 | 174,348 | 960,538 |
