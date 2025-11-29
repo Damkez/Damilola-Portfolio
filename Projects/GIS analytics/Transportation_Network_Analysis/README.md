@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Analyze road networks, accessibility, and optimize routing
+Analyze road networks.
 
 ## 🎯 Objectives
 
-- Map road network connectivity\n- Calculate accessibility metrics\n- Optimize routing efficiency\n- Identify network bottlenecks
+- Map connectivity\n- Find bottlenecks
 
 ## 📊 Key Findings
 
-1. Network efficiency score: 72/100\n2. 5 critical bottlenecks reduce flow by 35%\n3. Average commute time: 28.5 minutes\n4. Public transit covers only 45% of population within 800m
+1. Congestion in CBD\n2. Poor transit coverage
 
 ## 💡 Recommendations
 
-**1. Upgrade 3 key intersections to reduce congestion**\n\n**2. Extend bus routes to underserved areas**\n\n**3. Implement smart traffic management systems**\n\n**4. Add 2 new transit hubs in growth zones**\n
+**1. Expand bus routes**\n\n**2. Smart signals**\n
 
 ## 🛠️ Technologies Used
 

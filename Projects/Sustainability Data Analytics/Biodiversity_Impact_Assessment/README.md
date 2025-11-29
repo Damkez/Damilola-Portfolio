@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Assess development impact on species distribution and habitats
+Assess habitat impact.
 
 ## 🎯 Objectives
 
-- Map species distribution patterns\n- Assess habitat fragmentation\n- Calculate biodiversity indices\n- Recommend conservation measures
+- Map species\n- Fragmentation
 
 ## 📊 Key Findings
 
-1. Project impacts 3 threatened species habitats\n2. Habitat fragmentation increases by 18%\n3. Species richness decreases 23% in impact zone\n4. Critical wildlife corridor intersects project area
+1. Habitat loss\n2. Species risk
 
 ## 💡 Recommendations
 
-**1. Relocate infrastructure to avoid critical habitats**\n\n**2. Create 50-hectare habitat mitigation area**\n\n**3. Build wildlife crossing over highway corridor**\n\n**4. Implement 5-year biodiversity monitoring program**\n
+**1. Mitigation area**\n\n**2. Wildlife crossing**\n
 
 ## 🛠️ Technologies Used
 

@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Create detailed population density maps with spatial interpolation
+Map population distribution.
 
 ## 🎯 Objectives
 
-- Generate population density gradients\n- Identify demographic hotspots\n- Analyze spatial distribution patterns\n- Support infrastructure planning
+- Map density\n- Identify clusters
 
 ## 📊 Key Findings
 
-1. Peak density: 15,200 people/km² in city center\n2. Density decreases exponentially from center (r²=0.89)\n3. 3 secondary clusters identified in suburbs\n4. 12% of area contains 68% of population
+1. High density in center\n2. Suburban growth
 
 ## 💡 Recommendations
 
-**1. Expand public services in high-density clusters**\n\n**2. Plan new schools in growing suburban areas**\n\n**3. Upgrade utilities in density hotspots**\n\n**4. Implement density-based zoning regulations**\n
+**1. New schools**\n\n**2. Upgrade utilities**\n
 
 ## 🛠️ Technologies Used
 

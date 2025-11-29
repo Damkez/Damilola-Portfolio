@@ -1,20 +1,20 @@
-# Sales Forecasting & Trends
+# Sales Forecasting
 
 ## 📋 Project Overview
 
-Time series forecasting for revenue prediction and trend analysis
+Predict revenue.
 
 ## 🎯 Objectives
 
-- Analyze historical sales patterns\n- Identify seasonal trends\n- Build forecasting models\n- Support inventory and budget planning
+- Forecast sales\n- Trends
 
 ## 📊 Key Findings
 
-1. Strong seasonality: Q4 sales 42% above average\n2. Year-over-year growth: 12.3%\n3. ARIMA model achieves 94% accuracy\n4. Forecasted revenue (next 12 months): $8.7M
+1. Q4 peak\n2. Growth 12%
 
 ## 💡 Recommendations
 
-**1. Increase inventory 35% in Q3 for Q4 demand**\n\n**2. Launch promotional campaigns in slow months (Feb, Aug)**\n\n**3. Expand product line in high-growth categories**\n\n**4. Hire seasonal staff for Q4 peak (Oct-Dec)**\n
+**1. Stock up**\n\n**2. Promotions**\n
 
 ## 🛠️ Technologies Used
 

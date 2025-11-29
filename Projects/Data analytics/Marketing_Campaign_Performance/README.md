@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Analyze campaign ROI, conversion rates, and channel effectiveness
+Analyze ROI.
 
 ## 🎯 Objectives
 
-- Measure campaign ROI by channel\n- Analyze conversion funnels\n- Identify top-performing content\n- Optimize marketing spend allocation
+- Calc ROI\n- Channel mix
 
 ## 📊 Key Findings
 
-1. Email marketing: 420% ROI (best performer)\n2. Social media: 18% conversion rate vs 12% industry avg\n3. Paid search: 3.2% CTR, $42 CPA\n4. Content marketing generates 3x qualified leads
+1. Email best\n2. Social low
 
 ## 💡 Recommendations
 
-**1. Increase email marketing budget by 40%**\n\n**2. Reallocate spend from display ads to social (+25%)**\n\n**3. A/B test landing pages to improve conversion**\n\n**4. Double down on content marketing for lead generation**\n
+**1. More email**\n\n**2. Fix social**\n
 
 ## 🛠️ Technologies Used
 

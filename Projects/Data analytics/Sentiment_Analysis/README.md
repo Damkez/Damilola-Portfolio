@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Analyze customer sentiment from reviews, social media, and feedback
+Analyze text.
 
 ## 🎯 Objectives
 
-- Classify sentiment (positive/negative/neutral)\n- Extract key themes and topics\n- Track sentiment trends over time\n- Identify improvement opportunities
+- Classify sentiment\n- Topics
 
 ## 📊 Key Findings
 
-1. Overall sentiment: 73% positive, 18% neutral, 9% negative\n2. Net Promoter Score (NPS): 42 (industry avg: 35)\n3. Top positive themes: 'quality', 'service', 'fast shipping'\n4. Pain points: 'returns process' (38% of negative), 'price'
+1. Positive 70%\n2. Returns issue
 
 ## 💡 Recommendations
 
-**1. Simplify returns process to address #1 complaint**\n\n**2. Amplify positive 'fast shipping' in marketing**\n\n**3. Train customer service on recurring issues**\n\n**4. Monitor sentiment weekly for early issue detection**\n
+**1. Fix returns**\n\n**2. Promote speed**\n
 
 ## 🛠️ Technologies Used
 

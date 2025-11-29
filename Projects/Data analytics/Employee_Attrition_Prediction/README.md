@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Predict employee turnover and identify retention factors
+Predict turnover.
 
 ## 🎯 Objectives
 
-- Predict attrition risk by employee\n- Identify key retention factors\n- Segment high-risk groups\n- Develop targeted retention strategies
+- Predict churn\n- Retention
 
 ## 📊 Key Findings
 
-1. Predicted attrition rate: 16.1% (up from 15%)\n2. Top factors: overtime, years since promotion, job satisfaction\n3. Sales department shows highest risk (22% attrition)\n4. 68 employees at high risk (>70% probability)
+1. Sales high churn\n2. Overtime cause
 
 ## 💡 Recommendations
 
-**1. Intervene with 68 high-risk employees (retention bonuses, career paths)**\n\n**2. Reduce mandatory overtime in high-risk departments**\n\n**3. Implement promotion pathway for 3+ years without promotion**\n\n**4. Conduct stay interviews with high performers**\n
+**1. Reduce overtime**\n\n**2. Career paths**\n
 
 ## 🛠️ Technologies Used
 

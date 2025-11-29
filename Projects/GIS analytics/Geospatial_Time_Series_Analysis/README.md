@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Track and predict spatiotemporal patterns (traffic, migration, disease spread)
+Track patterns over time.
 
 ## 🎯 Objectives
 
-- Analyze movement patterns over time\n- Detect spatial trends and anomalies\n- Forecast future patterns\n- Support predictive planning
+- Analyze trends\n- Forecast
 
 ## 📊 Key Findings
 
-1. Traffic congestion increased 34% over 5 years\n2. Hotspots shifted 2.3km eastward annually\n3. Seasonal variations show 45% summer increase\n4. Predictive model: 95% accuracy for 3-month forecast
+1. Traffic up 34%\n2. Shift east
 
 ## 💡 Recommendations
 
-**1. Proactively upgrade infrastructure in predicted hotspots**\n\n**2. Implement dynamic tolling during peak periods**\n\n**3. Promote flexible work schedules to reduce congestion**\n\n**4. Expand public transit in growth corridors**\n
+**1. Upgrade roads**\n\n**2. Flexible work**\n
 
 ## 🛠️ Technologies Used
 

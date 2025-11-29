@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Calculate and visualize organizational carbon emissions across scopes 1, 2, and 3
+Calculate emissions.
 
 ## 🎯 Objectives
 
-- Quantify emissions by scope and category\n- Identify major emission sources\n- Benchmark against industry standards\n- Develop reduction roadmap
+- Quantify scopes\n- Benchmark
 
 ## 📊 Key Findings
 
-1. Total annual emissions: 45,230 tCO2e\n2. Scope 3 (supply chain) represents 68% of total\n3. Transportation accounts for 32% of emissions\n4. 15% reduction achievable through immediate actions
+1. Scope 3 high\n2. Transport impact
 
 ## 💡 Recommendations
 
-**1. Switch to renewable energy for operations (Scope 2)**\n\n**2. Engage suppliers on emission reduction targets**\n\n**3. Optimize logistics to reduce transportation emissions**\n\n**4. Set science-based targets: 45% reduction by 2030**\n
+**1. Renewables**\n\n**2. Supplier engagement**\n
 
 ## 🛠️ Technologies Used
 

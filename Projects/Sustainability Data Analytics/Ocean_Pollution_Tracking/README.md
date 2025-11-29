@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Monitor and analyze marine pollution patterns and sources
+Track marine debris.
 
 ## 🎯 Objectives
 
-- Track pollution incidents and concentrations\n- Identify primary pollution sources\n- Model pollution dispersion patterns\n- Prioritize cleanup efforts
+- Track sources\n- Cleanup
 
 ## 📊 Key Findings
 
-1. Plastic pollution: 2,850 kg collected in survey area\n2. 78% traced to 5 major river outflows\n3. Microplastics detected in 92% of water samples\n4. Cleanup cost: $125/kg, prevention cost: $18/kg
+1. Plastics high\n2. River source
 
 ## 💡 Recommendations
 
-**1. Install trash capture systems at river outflows**\n\n**2. Ban single-use plastics in coastal communities**\n\n**3. Implement deposit-return system for beverage containers**\n\n**4. Partner with fishing industry for ocean cleanup**\n
+**1. Traps**\n\n**2. Ban plastics**\n
 
 ## 🛠️ Technologies Used
 

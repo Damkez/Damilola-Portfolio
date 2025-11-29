@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Identify spatial clusters and hotspots (crime, business locations, disease outbreaks)
+Identify hotspots.
 
 ## 🎯 Objectives
 
-- Detect statistically significant clusters\n- Perform hotspot analysis (Getis-Ord Gi*)\n- Identify spatial patterns\n- Support targeted interventions
+- Detect clusters\n- Hotspot analysis
 
 ## 📊 Key Findings
 
-1. 5 significant crime hotspots identified (p<0.01)\n2. Clusters account for 62% of total incidents\n3. Hotspot-1 (downtown) shows 4.2x baseline rate\n4. Temporal analysis reveals peak activity 10pm-2am
+1. Crime hotspots found\n2. Nighttime peak
 
 ## 💡 Recommendations
 
-**1. Increase police presence in identified hotspots**\n\n**2. Improve street lighting in cluster zones**\n\n**3. Implement community watch programs**\n\n**4. Address socioeconomic factors in high-crime areas**\n
+**1. More patrols**\n\n**2. Better lighting**\n
 
 ## 🛠️ Technologies Used
 

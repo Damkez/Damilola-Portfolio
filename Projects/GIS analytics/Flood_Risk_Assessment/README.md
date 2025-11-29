@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Identify flood-prone areas using elevation data, precipitation patterns, and drainage networks
+Identify flood-prone areas using elevation data.
 
 ## 🎯 Objectives
 
-- Analyze elevation and topography\n- Identify high-risk flood zones\n- Calculate flood vulnerability scores\n- Recommend mitigation strategies
+- Analyze elevation\n- Identify flood zones
 
 ## 📊 Key Findings
 
-1. 15.3% of area classified as high flood risk\n2. Low-lying areas (<50m elevation) show 3x higher vulnerability\n3. Historical flood zones align with 89% prediction accuracy
+1. 15% high risk\n2. Low-lying areas vulnerable
 
 ## 💡 Recommendations
 
-**1. Implement flood barriers in high-risk zones**\n\n**2. Improve drainage infrastructure in vulnerable areas**\n\n**3. Establish early warning systems**\n\n**4. Restrict development in critical flood plains**\n
+**1. Build barriers**\n\n**2. Improve drainage**\n
 
 ## 🛠️ Technologies Used
 

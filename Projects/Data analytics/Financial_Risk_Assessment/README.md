@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Credit scoring and loan default prediction using machine learning
+Credit scoring.
 
 ## 🎯 Objectives
 
-- Build credit risk prediction model\n- Identify default risk factors\n- Calculate probability scores\n- Optimize approval thresholds
+- Predict default\n- Risk score
 
 ## 📊 Key Findings
 
-1. Model accuracy: 89%, AUC: 0.93\n2. Top risk factors: debt-to-income ratio, credit history length\n3. Default rate: 4.2% (industry avg: 5.1%)\n4. Optimal threshold balances approval rate and risk
+1. Debt ratio key\n2. Accuracy 89%
 
 ## 💡 Recommendations
 
-**1. Approve loans with risk score >0.65**\n\n**2. Require additional collateral for scores 0.45-0.65**\n\n**3. Offer risk-based pricing tiers**\n\n**4. Monitor model monthly and retrain quarterly**\n
+**1. Stricter rules**\n\n**2. Tiered rates**\n
 
 ## 🛠️ Technologies Used
 

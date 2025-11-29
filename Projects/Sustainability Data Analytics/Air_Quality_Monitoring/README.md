@@ -1,20 +1,20 @@
-# Air Quality Monitoring & Trends
+# Air Quality Monitoring
 
 ## 📋 Project Overview
 
-Analyze air pollution trends and health impacts
+Monitor pollution.
 
 ## 🎯 Objectives
 
-- Monitor PM2.5, NO2, and O3 levels\n- Identify pollution sources\n- Correlate with health outcomes\n- Support policy recommendations
+- Track PM2.5\n- Health impact
 
 ## 📊 Key Findings
 
-1. PM2.5 exceeds WHO guidelines 142 days/year\n2. Traffic contributes 58% of NO2 emissions\n3. Winter months show 2.3x higher pollution levels\n4. Estimated health costs: $12M annually
+1. High PM2.5\n2. Traffic source
 
 ## 💡 Recommendations
 
-**1. Implement low-emission zone in city center**\n\n**2. Expand public transportation to reduce vehicles**\n\n**3. Mandate industrial scrubbers for particulate control**\n\n**4. Plant 10,000 trees in high-pollution corridors**\n
+**1. Low emission zone**\n\n**2. Public transit**\n
 
 ## 🛠️ Technologies Used
 

@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Analyze water consumption patterns and conservation opportunities
+Analyze water usage.
 
 ## 🎯 Objectives
 
-- Track water usage by department/process\n- Identify conservation opportunities\n- Detect leaks and inefficiencies\n- Calculate potential cost savings
+- Track usage\n- Find leaks
 
 ## 📊 Key Findings
 
-1. Annual consumption: 125,000 m³\n2. Peak usage in summer months (45% above baseline)\n3. Cooling systems account for 42% of total usage\n4. Estimated leak losses: 8% of total consumption
+1. Summer peak\n2. Leaks found
 
 ## 💡 Recommendations
 
-**1. Install smart water monitoring systems**\n\n**2. Implement closed-loop cooling system (saves 35%)**\n\n**3. Repair identified leaks (8% immediate savings)**\n\n**4. Harvest rainwater for non-potable uses**\n
+**1. Smart meters**\n\n**2. Fix leaks**\n
 
 ## 🛠️ Technologies Used
 

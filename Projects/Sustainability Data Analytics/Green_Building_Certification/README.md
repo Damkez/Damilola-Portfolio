@@ -1,20 +1,20 @@
-# Green Building Certification Analysis
+# Green Building Certification
 
 ## 📋 Project Overview
 
-Analyze building performance for LEED/BREEAM certification opportunities
+Analyze for LEED.
 
 ## 🎯 Objectives
 
-- Assess current building performance\n- Identify certification opportunities\n- Calculate upgrade costs and benefits\n- Develop certification roadmap
+- Assess gaps\n- Cost benefit
 
 ## 📊 Key Findings
 
-1. Current status: 58 LEED points (Gold threshold: 60)\n2. Energy performance: 28% better than baseline\n3. Water efficiency: 32% reduction achieved\n4. Indoor air quality meets all requirements
+1. Silver level\n2. Energy good
 
 ## 💡 Recommendations
 
-**1. Install 50kW solar array (+3 points) to reach Gold**\n\n**2. Implement green roof on 30% of roof area (+2 points)**\n\n**3. Enhance bicycle facilities and EV charging (+2 points)**\n\n**4. Target certification cost: $85k, property value increase: $420k**\n
+**1. Solar**\n\n**2. Water fixtures**\n
 
 ## 🛠️ Technologies Used
 

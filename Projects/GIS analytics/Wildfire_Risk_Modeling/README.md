@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Assess wildfire risk based on vegetation, climate, and topography
+Assess wildfire risk.
 
 ## 🎯 Objectives
 
-- Calculate vegetation flammability indices\n- Assess terrain-based risk factors\n- Model fire spread potential\n- Identify high-risk zones
+- Model risk\n- Identify zones
 
 ## 📊 Key Findings
 
-1. 28.5% of area classified as high wildfire risk\n2. South-facing slopes show 2.3x higher risk\n3. Dry vegetation (NDVI<0.3) correlates with 85% of historical fires\n4. Wind patterns create critical risk corridors
+1. High risk in south\n2. Dry vegetation
 
 ## 💡 Recommendations
 
-**1. Create 50m firebreaks around high-risk communities**\n\n**2. Implement controlled burning in accumulation zones**\n\n**3. Deploy early detection sensors in critical areas**\n\n**4. Establish evacuation routes and emergency plans**\n
+**1. Firebreaks**\n\n**2. Early warning**\n
 
 ## 🛠️ Technologies Used
 

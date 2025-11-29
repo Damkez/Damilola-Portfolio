@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Statistical analysis of A/B test results with hypothesis testing
+Analyze experiments.
 
 ## 🎯 Objectives
 
-- Design statistically rigorous A/B tests\n- Analyze conversion rate differences\n- Calculate statistical significance\n- Provide actionable recommendations
+- Hypothesis test\n- Significance
 
 ## 📊 Key Findings
 
-1. Variant B: +18% conversion (p<0.001, highly significant)\n2. Improvement: 4.2% vs 3.6% conversion rate\n3. Statistical power: 0.95 (excellent)\n4. Projected annual revenue impact: +$420k
+1. Variant B wins\n2. Sig p-value
 
 ## 💡 Recommendations
 
-**1. Deploy Variant B to 100% of traffic immediately**\n\n**2. Estimated revenue increase: $420k annually**\n\n**3. Run follow-up test on CTA button color**\n\n**4. Document learnings for future design decisions**\n
+**1. Deploy B**\n\n**2. New test**\n
 
 ## 🛠️ Technologies Used
 

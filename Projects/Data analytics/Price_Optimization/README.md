@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Dynamic pricing strategy using elasticity analysis and competitor data
+Optimize pricing.
 
 ## 🎯 Objectives
 
-- Calculate price elasticity by product\n- Analyze competitor pricing\n- Optimize prices for revenue/profit\n- Simulate pricing scenarios
+- Elasticity\n- Revenue max
 
 ## 📊 Key Findings
 
-1. Average price elasticity: -1.8 (elastic)\n2. Premium products less elastic (-0.9)\n3. 10% price reduction → 18% volume increase\n4. Optimal pricing increases revenue by $580k annually
+1. Elastic demand\n2. Price drop works
 
 ## 💡 Recommendations
 
-**1. Increase premium product prices by 8% (inelastic demand)**\n\n**2. Strategic discounts on elastic products during slow periods**\n\n**3. Implement dynamic pricing for top 50 SKUs**\n\n**4. Monitor competitor pricing weekly for adjustments**\n
+**1. Dynamic pricing**\n\n**2. Discounts**\n
 
 ## 🛠️ Technologies Used
 

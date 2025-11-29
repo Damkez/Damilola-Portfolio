@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Build collaborative filtering recommendation engine
+Recsys engine.
 
 ## 🎯 Objectives
 
-- Build user-item interaction matrix\n- Implement collaborative filtering\n- Generate personalized recommendations\n- Measure recommendation accuracy
+- Collab filtering\n- Increase sales
 
 ## 📊 Key Findings
 
-1. Model precision@10: 0.78\n2. Recommendations increase basket size by 24%\n3. 'Customers who bought X also bought Y' drives 18% of sales\n4. Personalization increases conversion by 32%
+1. Basket size up\n2. Personalization works
 
 ## 💡 Recommendations
 
-**1. Deploy recommendation engine on product pages**\n\n**2. Implement 'You may also like' in checkout flow**\n\n**3. Use recommendations in email campaigns**\n\n**4. Expand to cross-category recommendations**\n
+**1. Deploy widget**\n\n**2. Email recs**\n
 
 ## 🛠️ Technologies Used
 

@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Determine visibility from observation points for towers, viewpoints, or solar panels
+Analyze visibility.
 
 ## 🎯 Objectives
 
-- Calculate viewshed from key locations\n- Assess visual impact of structures\n- Optimize placement for maximum visibility\n- Support scenic preservation
+- Calculate viewshed\n- Assess impact
 
 ## 📊 Key Findings
 
-1. Proposed tower visible from 42% of scenic viewpoints\n2. Alternative location reduces visual impact by 65%\n3. Cumulative viewshed shows 3 optimal placement zones\n4. Height reduction of 10m decreases visibility by 28%
+1. Tower visible from 40%\n2. Alt site better
 
 ## 💡 Recommendations
 
-**1. Relocate tower to alternative site B**\n\n**2. Reduce height by 15m to minimize visual impact**\n\n**3. Plant screening vegetation at key viewpoints**\n\n**4. Design structure with natural color palette**\n
+**1. Move tower**\n\n**2. Reduce height**\n
 
 ## 🛠️ Technologies Used
 

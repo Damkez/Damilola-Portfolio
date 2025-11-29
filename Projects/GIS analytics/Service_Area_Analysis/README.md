@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Calculate service coverage areas and identify underserved regions
+Analyze service coverage.
 
 ## 🎯 Objectives
 
-- Generate isochrone maps for facilities\n- Calculate population coverage\n- Identify service gaps\n- Optimize facility placement
+- Isochrone maps\n- Find gaps
 
 ## 📊 Key Findings
 
-1. Current facilities cover 78% of population within 15-min drive\n2. Eastern district significantly underserved (22% coverage)\n3. 3 new facility locations would increase coverage to 94%\n4. 15,000 residents beyond acceptable service distance
+1. East underserved\n2. 78% coverage
 
 ## 💡 Recommendations
 
-**1. Establish new facility in eastern district (priority)**\n\n**2. Extend service hours at western location**\n\n**3. Implement mobile service units for remote areas**\n\n**4. Partner with private sector to fill gaps**\n
+**1. New facility**\n\n**2. Mobile units**\n
 
 ## 🛠️ Technologies Used
 

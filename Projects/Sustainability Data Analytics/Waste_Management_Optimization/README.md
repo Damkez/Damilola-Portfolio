@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Optimize waste collection routes and improve recycling rates
+Optimize waste routes.
 
 ## 🎯 Objectives
 
-- Analyze waste generation patterns\n- Optimize collection routes\n- Increase recycling participation\n- Reduce operational costs
+- Optimize routes\n- Recycling rate
 
 ## 📊 Key Findings
 
-1. Current recycling rate: 32% (well below 50% target)\n2. Route optimization can reduce collection time by 23%\n3. Contamination rate: 18% (industry avg: 12%)\n4. Annual waste: 12,500 tons, potential diversion: 4,200 tons
+1. Low recycling\n2. Inefficient routes
 
 ## 💡 Recommendations
 
-**1. Redesign routes using optimization algorithm (save $125k/year)**\n\n**2. Launch resident education campaign to reduce contamination**\n\n**3. Add 50 recycling bins in high-density areas**\n\n**4. Implement pay-as-you-throw pricing model**\n
+**1. Route opt**\n\n**2. Education**\n
 
 ## 🛠️ Technologies Used
 

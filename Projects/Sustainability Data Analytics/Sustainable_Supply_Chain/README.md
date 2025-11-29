@@ -1,20 +1,20 @@
-# Sustainable Supply Chain Analysis
+# Sustainable Supply Chain
 
 ## 📋 Project Overview
 
-Track environmental impact across supply chain operations
+Track supply chain impact.
 
 ## 🎯 Objectives
 
-- Map supply chain emissions\n- Evaluate supplier sustainability\n- Identify improvement opportunities\n- Develop green procurement policies
+- Map emissions\n- Supplier score
 
 ## 📊 Key Findings
 
-1. Transportation emissions: 32,500 tCO2e annually\n2. Top 10 suppliers account for 73% of supply chain impact\n3. Packaging waste: 2,850 tons/year\n4. Local sourcing could reduce emissions by 28%
+1. Transport high\n2. Packaging waste
 
 ## 💡 Recommendations
 
-**1. Engage top suppliers on sustainability commitments**\n\n**2. Shift 40% of sourcing to local/regional suppliers**\n\n**3. Switch to ocean freight where possible (vs air)**\n\n**4. Implement sustainable packaging requirements**\n
+**1. Local sourcing**\n\n**2. Green packaging**\n
 
 ## 🛠️ Technologies Used
 

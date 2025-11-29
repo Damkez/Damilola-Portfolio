@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Monitor urban sprawl and land cover changes over time
+Monitor urban sprawl.
 
 ## 🎯 Objectives
 
-- Detect land cover changes (2015-2025)\n- Quantify urbanization rates\n- Predict future growth patterns\n- Assess environmental impacts
+- Detect changes\n- Quantify growth
 
 ## 📊 Key Findings
 
-1. Urban area expanded by 23.4% in 10 years\n2. Agricultural land decreased by 18.7%\n3. Forest cover reduced by 12.3%\n4. Projected 15% additional urban growth by 2030
+1. Urban +23%\n2. Forest -12%
 
 ## 💡 Recommendations
 
-**1. Implement green belt policies to control sprawl**\n\n**2. Protect remaining agricultural zones**\n\n**3. Mandate sustainable development practices**\n\n**4. Create wildlife corridors in expansion areas**\n
+**1. Green belts**\n\n**2. Zoning laws**\n
 
 ## 🛠️ Technologies Used
 

@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Identify optimal zones for specific crop cultivation
+Identify crop zones.
 
 ## 🎯 Objectives
 
-- Analyze soil composition and quality\n- Assess climate suitability\n- Evaluate water availability\n- Generate crop-specific suitability maps
+- Analyze soil\n- Map suitability
 
 ## 📊 Key Findings
 
-1. 45% of area highly suitable for wheat cultivation\n2. Corn suitability concentrated in eastern region (78% suitable)\n3. Water scarcity limits cultivation in 22% of area\n4. Optimal planting zones yield 30% more than average
+1. Wheat suitable in North\n2. Water scarcity
 
 ## 💡 Recommendations
 
-**1. Focus wheat cultivation in northern plains**\n\n**2. Implement drip irrigation in water-scarce zones**\n\n**3. Diversify crops based on micro-climate zones**\n\n**4. Invest in soil improvement for moderate-suitability areas**\n
+**1. Drip irrigation**\n\n**2. Crop rotation**\n
 
 ## 🛠️ Technologies Used
 

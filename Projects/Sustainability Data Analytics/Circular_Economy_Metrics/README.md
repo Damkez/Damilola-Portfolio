@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Track resource efficiency and product lifecycle sustainability
+Track circularity.
 
 ## 🎯 Objectives
 
-- Calculate material circularity indicators\n- Assess product lifecycle impacts\n- Identify circular economy opportunities\n- Quantify economic benefits
+- Calc circularity\n- Lifecycle
 
 ## 📊 Key Findings
 
-1. Current circularity score: 34% (linear economy)\n2. 68% of materials still virgin/non-recycled\n3. Product lifespan could extend by 40% with redesign\n4. Circular model could save $2.8M annually
+1. Low circularity\n2. Virgin materials
 
 ## 💡 Recommendations
 
-**1. Redesign products for disassembly and recycling**\n\n**2. Establish take-back program for end-of-life products**\n\n**3. Source 60% recycled materials by 2027**\n\n**4. Implement product-as-a-service business model**\n
+**1. Redesign**\n\n**2. Take-back program**\n
 
 ## 🛠️ Technologies Used
 

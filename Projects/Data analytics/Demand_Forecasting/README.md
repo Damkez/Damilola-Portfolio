@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Predict future product demand using machine learning
+Predict demand.
 
 ## 🎯 Objectives
 
-- Build demand prediction models\n- Incorporate seasonality and trends\n- Account for promotions and external factors\n- Support supply chain planning
+- ML forecast\n- Seasonality
 
 ## 📊 Key Findings
 
-1. XGBoost model: MAPE 8.2% (excellent accuracy)\n2. Strong weekly and annual seasonality detected\n3. Promotions increase demand by avg 34%\n4. Weather impacts demand ±12% for certain products
+1. Seasonality strong\n2. Promo effect
 
 ## 💡 Recommendations
 
-**1. Adopt ML-based forecasting for top 200 SKUs**\n\n**2. Build promotion impact model for better planning**\n\n**3. Integrate weather data for seasonal products**\n\n**4. Share forecasts with suppliers for better collaboration**\n
+**1. Plan ahead**\n\n**2. Share data**\n
 
 ## 🛠️ Technologies Used
 

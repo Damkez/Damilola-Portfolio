@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Optimize stock levels using demand forecasting and ABC analysis
+Optimize stock.
 
 ## 🎯 Objectives
 
-- Forecast demand by SKU\n- Optimize reorder points and quantities\n- Conduct ABC analysis\n- Minimize holding costs and stockouts
+- Forecast demand\n- Safety stock
 
 ## 📊 Key Findings
 
-1. Current stockout rate: 8.2% (target: <3%)\n2. Excess inventory: $1.2M (opportunity cost: $180k/year)\n3. ABC analysis: A-items (15%) drive 75% of value\n4. Optimized inventory reduces costs by $320k annually
+1. Stockouts high\n2. Excess stock
 
 ## 💡 Recommendations
 
-**1. Implement dynamic reorder points for A-items**\n\n**2. Reduce safety stock for C-items by 40%**\n\n**3. Negotiate consignment for slow-moving items**\n\n**4. Use predictive analytics for seasonal demand**\n
+**1. Reorder points**\n\n**2. ABC analysis**\n
 
 ## 🛠️ Technologies Used
 

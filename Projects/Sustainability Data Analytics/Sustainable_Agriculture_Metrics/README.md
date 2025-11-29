@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Assess agricultural practices for sustainability and efficiency
+Farm sustainability.
 
 ## 🎯 Objectives
 
-- Measure soil health indicators\n- Assess water use efficiency\n- Calculate sustainability indices\n- Optimize yields sustainably
+- Soil health\n- Water use
 
 ## 📊 Key Findings
 
-1. Soil organic matter: 2.8% (target: 4%)\n2. Water productivity: 1.2 kg/m³ (can improve to 1.8)\n3. Fertilizer efficiency: 62% (losing 38% to runoff)\n4. Sustainable intensification could increase yields by 25%
+1. Soil poor\n2. Water waste
 
 ## 💡 Recommendations
 
-**1. Implement cover cropping to build soil organic matter**\n\n**2. Adopt precision irrigation (drip systems)**\n\n**3. Use precision agriculture for targeted fertilizer application**\n\n**4. Integrate crop-livestock systems for nutrient cycling**\n
+**1. Cover crops**\n\n**2. Drip irrigation**\n
 
 ## 🛠️ Technologies Used
 

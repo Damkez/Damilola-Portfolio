@@ -2,19 +2,19 @@
 
 ## 📋 Project Overview
 
-Evaluate Environmental, Social, and Governance performance metrics
+Score ESG metrics.
 
 ## 🎯 Objectives
 
-- Assess ESG performance across pillars\n- Benchmark against industry peers\n- Identify improvement opportunities\n- Support investor reporting
+- Score pillars\n- Benchmark
 
 ## 📊 Key Findings
 
-1. Overall ESG score: 68/100 (above industry avg of 62)\n2. Environmental: 72/100, Social: 65/100, Governance: 67/100\n3. Strongest: renewable energy adoption (92/100)\n4. Weakest: supply chain transparency (48/100)
+1. Good environmental\n2. Weak social
 
 ## 💡 Recommendations
 
-**1. Enhance supply chain ESG monitoring and reporting**\n\n**2. Increase board diversity (currently below peer average)**\n\n**3. Set science-based emission reduction targets**\n\n**4. Publish annual sustainability report aligned with GRI**\n
+**1. Diversity**\n\n**2. Reporting**\n
 
 ## 🛠️ Technologies Used
 
