@@ -1,734 +1,628 @@
 """
-Portfolio Use Case Generator
-Automatically creates detailed, professional-grade Jupyter notebooks for all 36 portfolio use cases.
+Portfolio Use Case Generator - Archetype Edition
+Generates 36 unique, professional-grade Jupyter notebooks using distinct analytical archetypes.
 """
 
 import os
 import json
-import shutil
 
 # Base directory
 BASE_DIR = r"c:\Users\damil\OneDrive\Documents\Notebook\Damilola-Portfolio\Projects"
 
-# --- GIS ANALYTICS TEMPLATE ---
-GIS_NOTEBOOK_TEMPLATE = {
-    "cells": [
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": [
-                "# {title}\n\n",
-                "## 🌍 Business Context\n",
-                "{description}\n\n",
-                "This analysis leverages **Google Earth Engine (GEE)** and **Geemap** to provide spatial insights. \n",
-                "It includes:\n",
-                "- **Modular Analysis Class**: `GeoSpatialAnalyzer` for streamlined processing.\n",
-                "- **Interactive Maps**: Visualizing spatial patterns and hotspots.\n",
-                "- **Statistical Analysis**: Quantifying coverage, risk, or suitability.\n",
-                "- **Actionable Recommendations**: Data-driven strategies for decision-making."
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Import Required Libraries\n",
-                "import ee\n",
-                "import geemap\n",
-                "import pandas as pd\n",
-                "import numpy as np\n",
-                "import matplotlib.pyplot as plt\n",
-                "import seaborn as sns\n",
-                "import altair as alt\n",
-                "import folium\n",
-                "\n",
-                "# Initialize Earth Engine\n",
-                "try:\n",
-                "    ee.Initialize()\n",
-                "    print('Google Earth Engine initialized successfully.')\n",
-                "except Exception as e:\n",
-                "    ee.Authenticate()\n",
-                "    ee.Initialize()\n",
-                "    print('Google Earth Engine initialized after authentication.')"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Configuration & Constants\n",
-                "AOI_COORDS = [9.0820, 8.6753] # Nigeria Center (Lat, Lon)\n",
-                "ZOOM_LEVEL = 6\n",
-                "YEARS = list(range(2020, 2025))\n",
-                "\n",
-                "# Use Case Specific Config\n",
-                "DATASET_ID = '{dataset_id}'\n",
-                "BAND_NAME = '{band_name}'\n",
-                "VIS_PARAMS = {vis_params}\n",
-                "\n",
-                "# Define Area of Interest (AOI)\n",
-                "nigeria = ee.FeatureCollection('FAO/GAUL/2015/level0').filter(ee.Filter.eq('ADM0_NAME', 'Nigeria'))\n",
-                "AOI = nigeria.geometry()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# ---------------------------------------------------------------------------------------\n",
-                "# GeoSpatialAnalyzer Class\n",
-                "# ---------------------------------------------------------------------------------------\n",
-                "class GeoSpatialAnalyzer:\n",
-                "    def __init__(self, aoi, dataset_id, band_name, vis_params):\n",
-                "        self.aoi = aoi\n",
-                "        self.dataset_id = dataset_id\n",
-                "        self.band_name = band_name\n",
-                "        stats = img.reduceRegion(\n",
-                "            reducer=ee.Reducer.mean().combine(\n",
-                "                reducer2=ee.Reducer.minMax(), sharedInputs=True\n",
-                "            ),\n",
-                "            geometry=self.aoi,\n",
-                "            scale=1000,\n",
-                "            maxPixels=1e9\n",
-                "        )\n",
-                "        return stats.getInfo()\n",
-                "\n",
-                "    def create_interactive_map(self, year):\n",
-                "        \"\"\"Generates an interactive map for visualization.\"\"\"\n",
-                "        m = geemap.Map(location=AOI_COORDS, zoom_start=ZOOM_LEVEL)\n",
-                "        img = self.get_annual_image(year)\n",
-                "        m.addLayer(img, self.vis_params, f'{self.band_name} ({year})')\n",
-                "        m.addLayerControl()\n",
-                "        return m\n",
-                "\n",
-                "    def analyze_trends(self, years):\n",
-                "        \"\"\"Analyzes trends over multiple years.\"\"\"\n",
-                "        results = []\n",
-                "        print(f'Analyzing trends for {self.band_name}...')\n",
-                "        for year in years:\n",
-                "            stats = self.calculate_statistics(year)\n",
-                "            if stats:\n",
-                "                row = {'Year': year}\n",
-                "                row.update(stats)\n",
-                "                results.append(row)\n",
-                "        return pd.DataFrame(results)"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Initialize Analyzer\n",
-                "analyzer = GeoSpatialAnalyzer(AOI, DATASET_ID, BAND_NAME, VIS_PARAMS)"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 📊 Statistical Analysis & Trends"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Calculate Trends\n",
-                "df_trends = analyzer.analyze_trends(YEARS)\n",
-                "print('Trend Analysis Results:')\n",
-                "display(df_trends)\n",
-                "\n",
-                "# Visualize Trends\n",
-                "if not df_trends.empty:\n",
-                "    plt.figure(figsize=(10, 5))\n",
-                "    sns.lineplot(data=df_trends, x='Year', y=f'{BAND_NAME}_mean', marker='o')\n",
-                "    plt.title(f'Temporal Trend of {BAND_NAME} (2020-2024)')\n",
-                "    plt.ylabel('Mean Value')\n",
-                "    plt.grid(True)\n",
-                "    plt.show()"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 🗺️ Interactive Map Visualization"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Display Map for Latest Year\n",
-                "m = analyzer.create_interactive_map(2024)\n",
-                "m"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 💡 Key Findings & Recommendations"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "print('KEY FINDINGS:')\n",
-                "{findings_print}\n\n",
-                "print('\\nRECOMMENDATIONS:')\n",
-                "{recommendations_print}"
-            ]
-        }
-    ],
-    "metadata": {
-        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-        "language_info": {"codemirror_mode": {"name": "ipython", "version": 3}, "file_extension": ".py", "mimetype": "text/x-python", "name": "python", "nbconvert_exporter": "python", "pygments_lexer": "ipython3", "version": "3.8.0"}
-    },
-    "nbformat": 4,
-    "nbformat_minor": 4
-}
+# ======================================================================================
+# ARCHETYPE CODE TEMPLATES
+# ======================================================================================
 
-# --- SUSTAINABILITY ANALYTICS TEMPLATE ---
-SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
-    "cells": [
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": [
-                "# {title}\n\n",
-                "## 🌿 Business Context\n",
-                "{description}\n\n",
-                "This analysis uses **Python (Pandas, Seaborn)** to track, analyze, and optimize sustainability metrics.\n",
-                "It includes:\n",
-                "- **Data Simulation**: Generating realistic environmental data series.\n",
-                "- **SustainabilityAnalyzer Class**: Encapsulating KPI calculations and logic.\n",
-                "- **Trend Analysis**: Identifying patterns and anomalies.\n",
-                "- **Strategic Recommendations**: Improving environmental performance."
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Import Required Libraries\n",
-                "import pandas as pd\n",
-                "import numpy as np\n",
-                "import matplotlib.pyplot as plt\n",
-                "import seaborn as sns\n",
-                "from scipy import stats\n",
-                "\n",
-                "# Set Style\n",
-                "plt.style.use('seaborn-v0_8-whitegrid')\n",
-                "sns.set_palette('viridis')"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# ---------------------------------------------------------------------------------------\n",
-                "# Data Generation (Simulating Enterprise Data)\n",
-                "# ---------------------------------------------------------------------------------------\n",
-                "def generate_sustainability_data(n_points=1000):\n",
-                "    np.random.seed(42)\n",
-                "    dates = pd.date_range(start='2022-01-01', periods=n_points, freq='D')\n",
-                "    \n",
-                "    # Simulate Seasonality and Trend\n",
-                "    t = np.arange(n_points)\n",
-                "    seasonality = 10 * np.sin(2 * np.pi * t / 365)\n",
-                "    trend = 0.05 * t\n",
-                "    noise = np.random.normal(0, 5, n_points)\n",
-                "    \n",
-                "    values = 100 + seasonality + trend + noise\n",
-                "    \n",
-                "    df = pd.DataFrame({\n",
-                "        'Date': dates,\n",
-                "        'Metric_Value': values,\n",
-                "        'Department': np.random.choice(['Operations', 'Logistics', 'Facilities'], n_points),\n",
-                "        'Region': np.random.choice(['North', 'South', 'East', 'West'], n_points)\n",
-                "    })\n",
-                "    return df.set_index('Date')\n",
-                "\n",
-                "data = generate_sustainability_data({data_points})\n",
-                "print(f'Data Generated: {{data.shape}} rows')\n",
-                "data.head()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# ---------------------------------------------------------------------------------------\n",
-                "# SustainabilityAnalyzer Class\n",
-                "# ---------------------------------------------------------------------------------------\n",
-                "class SustainabilityAnalyzer:\n",
-                "    def __init__(self, df):\n",
-                "        self.df = df\n",
-                "\n",
-                "    def calculate_kpis(self):\n",
-                "        \"\"\"Calculates key performance indicators.\"\"\"\n",
-                "        total = self.df['Metric_Value'].sum()\n",
-                "        avg = self.df['Metric_Value'].mean()\n",
-                "        peak = self.df['Metric_Value'].max()\n",
-                "        return {'Total Impact': total, 'Average Daily': avg, 'Peak Value': peak}\n",
-                "\n",
-                "    def analyze_by_category(self, category_col):\n",
-                "        \"\"\"Aggregates metrics by category.\"\"\"\n",
-                "        return self.df.groupby(category_col)['Metric_Value'].agg(['mean', 'sum', 'std']).sort_values('sum', ascending=False)\n",
-                "\n",
-                "    def detect_anomalies(self, threshold=2):\n",
-                "        \"\"\"Detects values exceeding Z-score threshold.\"\"\"\n",
-                "        z_scores = np.abs(stats.zscore(self.df['Metric_Value']))\n",
-                "        return self.df[z_scores > threshold]\n",
-                "\n",
-                "    def plot_trends(self):\n",
-                "        \"\"\"Visualizes trends and breakdown.\"\"\"\n",
-                "        fig, axes = plt.subplots(2, 1, figsize=(12, 10))\n",
-                "        \n",
-                "        # Time Series\n",
-                "        sns.lineplot(data=self.df, x=self.df.index, y='Metric_Value', ax=axes[0])\n",
-                "        axes[0].set_title('Metric Trends Over Time')\n",
-                "        axes[0].set_ylabel('Value')\n",
-                "        \n",
-                "        # Department Breakdown\n",
-                "        sns.boxplot(data=self.df, x='Department', y='Metric_Value', ax=axes[1])\n",
-                "        axes[1].set_title('Distribution by Department')\n",
-                "        \n",
-                "        plt.tight_layout()\n",
-                "        plt.show()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Initialize and Run Analysis\n",
-                "analyzer = SustainabilityAnalyzer(data)\n",
-                "\n",
-                "# 1. KPIs\n",
-                "kpis = analyzer.calculate_kpis()\n",
-                "print('--- Key Performance Indicators ---')\n",
-                "for k, v in kpis.items():\n",
-                "    print(f'{k}: {v:,.2f}')\n",
-                "\n",
-                "# 2. Category Analysis\n",
-                "print('\\n--- Department Breakdown ---')\n",
-                "display(analyzer.analyze_by_category('Department'))\n",
-                "\n",
-                "# 3. Anomaly Detection\n",
-                "anomalies = analyzer.detect_anomalies()\n",
-                "print(f'\\n--- Anomalies Detected: {len(anomalies)} events ---')"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 📈 Visualization Dashboard"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "analyzer.plot_trends()"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 💡 Key Findings & Recommendations"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "print('KEY FINDINGS:')\n",
-                "{findings_print}\n\n",
-                "print('\\nRECOMMENDATIONS:')\n",
-                "{recommendations_print}"
-            ]
-        }
-    ],
-    "metadata": {
-        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-        "language_info": {"codemirror_mode": {"name": "ipython", "version": 3}, "file_extension": ".py", "mimetype": "text/x-python", "name": "python", "nbconvert_exporter": "python", "pygments_lexer": "ipython3", "version": "3.8.0"}
+# 1. PREDICTIVE CLASSIFICATION (Fraud, Churn, Risk)
+CODE_CLASSIFICATION = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Import Libraries\n",
+            "import pandas as pd\n",
+            "import numpy as np\n",
+            "import matplotlib.pyplot as plt\n",
+            "import seaborn as sns\n",
+            "from sklearn.model_selection import train_test_split\n",
+            "from sklearn.ensemble import RandomForestClassifier\n",
+            "from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc\n",
+            "from sklearn.preprocessing import StandardScaler\n",
+            "\n",
+            "plt.style.use('seaborn-v0_8-whitegrid')"
+        ]
     },
-    "nbformat": 4,
-    "nbformat_minor": 4
-}
-
-# --- DATA ANALYTICS TEMPLATE ---
-DATA_NOTEBOOK_TEMPLATE = {
-    "cells": [
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": [
-                "# {title}\n\n",
-                "## 📊 Business Context\n",
-                "{description}\n\n",
-                "This analysis utilizes **Machine Learning (Scikit-Learn)** to derive predictive insights.\n",
-                "It includes:\n",
-                "- **Data Preprocessing**: Cleaning and feature engineering.\n",
-                "- **Exploratory Data Analysis (EDA)**: Understanding distributions and correlations.\n",
-                "- **Predictive Modeling**: Building and evaluating ML models.\n",
-                "- **Business Insights**: Translating model outputs into strategy."
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Import Required Libraries\n",
-                "import pandas as pd\n",
-                "import numpy as np\n",
-                "import matplotlib.pyplot as plt\n",
-                "import seaborn as sns\n",
-                "from sklearn.model_selection import train_test_split\n",
-                "from sklearn.preprocessing import StandardScaler, LabelEncoder\n",
-                "from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor\n",
-                "from sklearn.metrics import classification_report, mean_squared_error, r2_score, confusion_matrix\n",
-                "from sklearn.cluster import KMeans\n",
-                "\n",
-                "# Set Style\n",
-                "plt.style.use('seaborn-v0_8-darkgrid')\n",
-                "sns.set_palette('deep')"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# ---------------------------------------------------------------------------------------\n",
-                "# Data Generation (Synthetic Dataset)\n",
-                "# ---------------------------------------------------------------------------------------\n",
-                "def generate_dataset(n_samples=1000):\n",
-                "    np.random.seed(42)\n",
-                "    \n",
-                "    # Features\n",
-                "    age = np.random.normal(35, 10, n_samples)\n",
-                "    income = np.random.normal(50000, 15000, n_samples)\n",
-                "    score = np.random.uniform(0, 100, n_samples)\n",
-                "    category = np.random.choice(['A', 'B', 'C'], n_samples)\n",
-                "    \n",
-                "    # Target (Complex relationship)\n",
-                "    target_prob = (age/100 + income/100000 + score/200) / 3\n",
-                "    target = (target_prob + np.random.normal(0, 0.1, n_samples)) > 0.5\n",
-                "    \n",
-                "    df = pd.DataFrame({\n",
-                "        'Age': age,\n",
-                "        'Income': income,\n",
-                "        'Score': score,\n",
-                "        'Category': category,\n",
-                "        'Target': target.astype(int)\n",
-                "    })\n",
-                "    return df\n",
-                "\n",
-                "data = generate_dataset({data_points})\n",
-                "print(f'Dataset Shape: {{data.shape}}')\n",
-                "data.head()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# ---------------------------------------------------------------------------------------\n",
-                "# PredictiveModeler Class\n",
-                "# ---------------------------------------------------------------------------------------\n",
-                "class PredictiveModeler:\n",
-                "    def __init__(self, df, target_col):\n",
-                "        self.df = df\n",
-                "        self.target_col = target_col\n",
-                "        self.model = RandomForestClassifier(n_estimators=100, random_state=42)\n",
-                "        self.X_train, self.X_test, self.y_train, self.y_test = None, None, None, None\n",
-                "\n",
-                "    def preprocess(self):\n",
-                "        \"\"\"Encodes categorical variables and splits data.\"\"\"\n",
-                "        # Simple encoding for demonstration\n",
-                "        df_processed = pd.get_dummies(self.df, drop_first=True)\n",
-                "        X = df_processed.drop(self.target_col, axis=1)\n",
-                "        y = df_processed[self.target_col]\n",
-                "        \n",
-                "        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(\n",
-                "            X, y, test_size=0.2, random_state=42\n",
-                "        )\n",
-                "        return X.head()\n",
-                "\n",
-                "    def train(self):\n",
-                "        \"\"\"Trains the model.\"\"\"\n",
-                "        self.model.fit(self.X_train, self.y_train)\n",
-                "        print('Model Training Complete.')\n",
-                "\n",
-                "    def evaluate(self):\n",
-                "        \"\"\"Evaluates model performance.\"\"\"\n",
-                "        preds = self.model.predict(self.X_test)\n",
-                "        print('--- Classification Report ---')\n",
-                "        print(classification_report(self.y_test, preds))\n",
-                "        \n",
-                "        # Confusion Matrix\n",
-                "        plt.figure(figsize=(6, 5))\n",
-                "        sns.heatmap(confusion_matrix(self.y_test, preds), annot=True, fmt='d', cmap='Blues')\n",
-                "        plt.title('Confusion Matrix')\n",
-                "        plt.show()\n",
-                "\n",
-                "    def plot_feature_importance(self):\n",
-                "        \"\"\"Plots feature importance.\"\"\"\n",
-                "        importances = self.model.feature_importances_\n",
-                "        indices = np.argsort(importances)[::-1]\n",
-                "        features = self.X_train.columns\n",
-                "        \n",
-                "        plt.figure(figsize=(10, 6))\n",
-                "        sns.barplot(x=importances[indices], y=features[indices])\n",
-                "        plt.title('Feature Importance')\n",
-                "        plt.show()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "# Initialize and Run Modeling Pipeline\n",
-                "modeler = PredictiveModeler(data, 'Target')\n",
-                "\n",
-                "# 1. Preprocess\n",
-                "print('Preprocessing Data...')\n",
-                "modeler.preprocess()\n",
-                "\n",
-                "# 2. Train\n",
-                "modeler.train()\n",
-                "\n",
-                "# 3. Evaluate\n",
-                "modeler.evaluate()"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 🔍 Feature Importance Analysis"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "modeler.plot_feature_importance()"
-            ]
-        },
-        {
-            "cell_type": "markdown",
-            "metadata": {},
-            "source": ["## 💡 Key Findings & Recommendations"]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": None,
-            "metadata": {},
-            "source": [
-                "print('KEY FINDINGS:')\n",
-                "{findings_print}\n\n",
-                "print('\\nRECOMMENDATIONS:')\n",
-                "{recommendations_print}"
-            ]
-        }
-    ],
-    "metadata": {
-        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-        "language_info": {"codemirror_mode": {"name": "ipython", "version": 3}, "file_extension": ".py", "mimetype": "text/x-python", "name": "python", "nbconvert_exporter": "python", "pygments_lexer": "ipython3", "version": "3.8.0"}
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Data Generation\n",
+            "def generate_data(n=1000):\n",
+            "    np.random.seed(42)\n",
+            "    # Generate synthetic features\n",
+            "    data = pd.DataFrame({\n",
+            "        '{feat1}': np.random.normal(50, 15, n),\n",
+            "        '{feat2}': np.random.exponential(10, n),\n",
+            "        '{feat3}': np.random.randint(0, 100, n),\n",
+            "        '{feat4}': np.random.choice(['A', 'B', 'C'], n)\n",
+            "    })\n",
+            "    # Generate target with some logic\n",
+            "    prob = (data['{feat1}']/100 + data['{feat3}']/200) / 2\n",
+            "    data['{target}'] = (prob + np.random.normal(0, 0.1, n) > 0.6).astype(int)\n",
+            "    return data\n",
+            "\n",
+            "df = generate_data({data_points})\n",
+            "print(f'Dataset Shape: {{df.shape}}')\n",
+            "df.head()"
+        ]
     },
-    "nbformat": 4,
-    "nbformat_minor": 4
-}
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Preprocessing & Modeling\n",
+            "class ClassifierEngine:\n",
+            "    def __init__(self, df, target):\n",
+            "        self.df = df\n",
+            "        self.target = target\n",
+            "        self.model = RandomForestClassifier(n_estimators=100, random_state=42)\n",
+            "        \n",
+            "    def train(self):\n",
+            "        # Encoding\n",
+            "        X = pd.get_dummies(self.df.drop(self.target, axis=1), drop_first=True)\n",
+            "        y = self.df[self.target]\n",
+            "        \n",
+            "        # Split\n",
+            "        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.3)\n",
+            "        \n",
+            "        # Fit\n",
+            "        self.model.fit(self.X_train, self.y_train)\n",
+            "        print('Model Trained Successfully')\n",
+            "        \n",
+            "    def evaluate(self):\n",
+            "        preds = self.model.predict(self.X_test)\n",
+            "        print(classification_report(self.y_test, preds))\n",
+            "        \n",
+            "        # Confusion Matrix\n",
+            "        plt.figure(figsize=(6,5))\n",
+            "        sns.heatmap(confusion_matrix(self.y_test, preds), annot=True, fmt='d', cmap='Blues')\n",
+            "        plt.title('Confusion Matrix')\n",
+            "        plt.show()\n",
+            "\n",
+            "engine = ClassifierEngine(df, '{target}')\n",
+            "engine.train()\n",
+            "engine.evaluate()"
+        ]
+    }
+]
 
-# --- USE CASE DEFINITIONS ---
+# 2. TIME SERIES FORECASTING (Sales, Demand)
+CODE_FORECASTING = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import pandas as pd\n",
+            "import numpy as np\n",
+            "import matplotlib.pyplot as plt\n",
+            "import seaborn as sns\n",
+            "from statsmodels.tsa.holtwinters import ExponentialSmoothing\n",
+            "from sklearn.metrics import mean_absolute_error\n",
+            "\n",
+            "plt.style.use('seaborn-v0_8-darkgrid')"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Data Generation\n",
+            "def generate_timeseries(n=365):\n",
+            "    dates = pd.date_range(start='2023-01-01', periods=n, freq='D')\n",
+            "    t = np.arange(n)\n",
+            "    # Trend + Seasonality + Noise\n",
+            "    trend = 0.5 * t\n",
+            "    season = 10 * np.sin(2 * np.pi * t / 30) # Monthly seasonality\n",
+            "    noise = np.random.normal(0, 5, n)\n",
+            "    values = 100 + trend + season + noise\n",
+            "    \n",
+            "    return pd.DataFrame({'Date': dates, '{target}': values}).set_index('Date')\n",
+            "\n",
+            "df = generate_timeseries({data_points})\n",
+            "df.plot(figsize=(12,6), title='Historical Data')\n",
+            "plt.show()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Forecasting Engine\n",
+            "class Forecaster:\n",
+            "    def __init__(self, df):\n",
+            "        self.df = df\n",
+            "        self.model = None\n",
+            "        \n",
+            "    def train_predict(self, days=30):\n",
+            "        # Train/Test Split\n",
+            "        train = self.df.iloc[:-days]\n",
+            "        test = self.df.iloc[-days:]\n",
+            "        \n",
+            "        # Holt-Winters Exponential Smoothing\n",
+            "        self.model = ExponentialSmoothing(train, seasonal='add', seasonal_periods=30).fit()\n",
+            "        preds = self.model.forecast(days)\n",
+            "        \n",
+            "        # Evaluation\n",
+            "        mae = mean_absolute_error(test, preds)\n",
+            "        print(f'MAE: {mae:.2f}')\n",
+            "        \n",
+            "        # Plot\n",
+            "        plt.figure(figsize=(12,6))\n",
+            "        plt.plot(train.index, train, label='Train')\n",
+            "        plt.plot(test.index, test, label='Test')\n",
+            "        plt.plot(test.index, preds, label='Forecast', linestyle='--')\n",
+            "        plt.legend()\n",
+            "        plt.title('Forecast vs Actuals')\n",
+            "        plt.show()\n",
+            "        return preds\n",
+            "\n",
+            "forecaster = Forecaster(df)\n",
+            "forecast = forecaster.train_predict(30)"
+        ]
+    }
+]
+
+# 3. CLUSTERING (Segmentation)
+CODE_CLUSTERING = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import pandas as pd\n",
+            "import numpy as np\n",
+            "import matplotlib.pyplot as plt\n",
+            "import seaborn as sns\n",
+            "from sklearn.cluster import KMeans\n",
+            "from sklearn.preprocessing import StandardScaler\n",
+            "from sklearn.decomposition import PCA\n",
+            "\n",
+            "plt.style.use('seaborn-v0_8-muted')"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Data Generation\n",
+            "def generate_clusters(n=500):\n",
+            "    # Generate 3 distinct blobs\n",
+            "    c1 = np.random.normal(20, 5, (n//3, 3))\n",
+            "    c2 = np.random.normal(50, 10, (n//3, 3))\n",
+            "    c3 = np.random.normal(80, 5, (n//3, 3))\n",
+            "    data = np.vstack([c1, c2, c3])\n",
+            "    \n",
+            "    df = pd.DataFrame(data, columns=['{feat1}', '{feat2}', '{feat3}'])\n",
+            "    return df\n",
+            "\n",
+            "df = generate_clusters({data_points})\n",
+            "print('Data Generated')\n",
+            "df.head()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Clustering Engine\n",
+            "class ClusterEngine:\n",
+            "    def __init__(self, df):\n",
+            "        self.df = df\n",
+            "        self.scaler = StandardScaler()\n",
+            "        \n",
+            "    def find_optimal_k(self):\n",
+            "        wcss = []\n",
+            "        scaled = self.scaler.fit_transform(self.df)\n",
+            "        for i in range(1, 11):\n",
+            "            kmeans = KMeans(n_clusters=i, random_state=42)\n",
+            "            kmeans.fit(scaled)\n",
+            "            wcss.append(kmeans.inertia_)\n",
+            "            \n",
+            "        plt.plot(range(1, 11), wcss, marker='o')\n",
+            "        plt.title('Elbow Method')\n",
+            "        plt.show()\n",
+            "        \n",
+            "    def cluster_and_plot(self, k=3):\n",
+            "        scaled = self.scaler.fit_transform(self.df)\n",
+            "        kmeans = KMeans(n_clusters=k, random_state=42)\n",
+            "        clusters = kmeans.fit_predict(scaled)\n",
+            "        self.df['Cluster'] = clusters\n",
+            "        \n",
+            "        # PCA for visualization\n",
+            "        pca = PCA(n_components=2)\n",
+            "        components = pca.fit_transform(scaled)\n",
+            "        \n",
+            "        plt.figure(figsize=(10,6))\n",
+            "        sns.scatterplot(x=components[:,0], y=components[:,1], hue=clusters, palette='viridis', s=100)\n",
+            "        plt.title(f'Cluster Visualization (K={k})')\n",
+            "        plt.show()\n",
+            "        return self.df.groupby('Cluster').mean()\n",
+            "\n",
+            "engine = ClusterEngine(df)\n",
+            "engine.find_optimal_k()\n",
+            "profile = engine.cluster_and_plot(3)\n",
+            "display(profile)"
+        ]
+    }
+]
+
+# 4. HYPOTHESIS TESTING (A/B Testing)
+CODE_HYPOTHESIS = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import pandas as pd\n",
+            "import numpy as np\n",
+            "import matplotlib.pyplot as plt\n",
+            "import seaborn as sns\n",
+            "from scipy import stats\n",
+            "\n",
+            "plt.style.use('seaborn-v0_8-whitegrid')"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Data Generation\n",
+            "def generate_ab_data(n=1000):\n",
+            "    # Control Group\n",
+            "    control = np.random.normal(100, 20, n)\n",
+            "    # Treatment Group (slightly better)\n",
+            "    treatment = np.random.normal(105, 22, n)\n",
+            "    \n",
+            "    df = pd.DataFrame({\n",
+            "        'Group': ['Control']*n + ['Treatment']*n,\n",
+            "        '{metric}': np.concatenate([control, treatment])\n",
+            "    })\n",
+            "    return df\n",
+            "\n",
+            "df = generate_ab_data({data_points})\n",
+            "sns.boxplot(x='Group', y='{metric}', data=df)\n",
+            "plt.title('Group Comparison')\n",
+            "plt.show()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Statistical Analysis\n",
+            "control = df[df['Group']=='Control']['{metric}']\n",
+            "treatment = df[df['Group']=='Treatment']['{metric}']\n",
+            "\n",
+            "# T-Test\n",
+            "t_stat, p_val = stats.ttest_ind(control, treatment)\n",
+            "print(f'T-Statistic: {t_stat:.4f}')\n",
+            "print(f'P-Value: {p_val:.4f}')\n",
+            "\n",
+            "if p_val < 0.05:\n",
+            "    print('RESULT: Statistically Significant Difference Detected!')\n",
+            "else:\n",
+            "    print('RESULT: No Significant Difference.')"
+        ]
+    }
+]
+
+# 5. RASTER RISK ANALYSIS (GIS)
+CODE_RASTER_RISK = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import ee\n",
+            "import geemap\n",
+            "\n",
+            "try:\n",
+            "    ee.Initialize()\n",
+            "except:\n",
+            "    ee.Authenticate()\n",
+            "    ee.Initialize()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Define AOI and Datasets\n",
+            "AOI = ee.Geometry.Point([9.0820, 8.6753]).buffer(50000)\n",
+            "\n",
+            "def analyze_risk():\n",
+            "    # 1. Elevation (SRTM)\n",
+            "    srtm = ee.Image('USGS/SRTMGL1_003').clip(AOI)\n",
+            "    elevation = srtm.select('elevation')\n",
+            "    slope = ee.Terrain.slope(elevation)\n",
+            "    \n",
+            "    # 2. Land Cover\n",
+            "    landcover = ee.Image('COPERNICUS/Landcover/100m/Proba-V-C3/Global/2019').select('discrete_classification').clip(AOI)\n",
+            "    \n",
+            "    # 3. Risk Calculation (Simple Weighted Overlay)\n",
+            "    # Low elevation + Flat slope = High Flood Risk\n",
+            "    risk = elevation.lt(200).And(slope.lt(5))\n",
+            "    \n",
+            "    # Visualization\n",
+            "    m = geemap.Map(center=[9.0820, 8.6753], zoom=9)\n",
+            "    m.addLayer(elevation, {'min': 0, 'max': 500}, 'Elevation')\n",
+            "    m.addLayer(risk.updateMask(risk), {'palette': ['red']}, 'High Risk Areas')\n",
+            "    return m\n",
+            "\n",
+            "m = analyze_risk()\n",
+            "m"
+        ]
+    }
+]
+
+# 6. CHANGE DETECTION (GIS)
+CODE_CHANGE_DETECTION = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import ee\n",
+            "import geemap\n",
+            "\n",
+            "try:\n",
+            "    ee.Initialize()\n",
+            "except:\n",
+            "    ee.Authenticate()\n",
+            "    ee.Initialize()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Change Detection Analysis\n",
+            "AOI = ee.Geometry.Point([9.0820, 8.6753]).buffer(20000)\n",
+            "\n",
+            "def detect_changes():\n",
+            "    # Load Image Collection\n",
+            "    dataset = ee.ImageCollection('{dataset_id}')\n",
+            "    \n",
+            "    # Year 1\n",
+            "    img1 = dataset.filterDate('2020-01-01', '2020-12-31').filterBounds(AOI).select('{band_name}').mean().clip(AOI)\n",
+            "    # Year 2\n",
+            "    img2 = dataset.filterDate('2023-01-01', '2023-12-31').filterBounds(AOI).select('{band_name}').mean().clip(AOI)\n",
+            "    \n",
+            "    # Calculate Difference\n",
+            "    diff = img2.subtract(img1)\n",
+            "    \n",
+            "    # Visualization\n",
+            "    m = geemap.Map(center=[9.0820, 8.6753], zoom=10)\n",
+            "    m.addLayer(img1, {vis_params}, '2020')\n",
+            "    m.addLayer(img2, {vis_params}, '2023')\n",
+            "    m.addLayer(diff, {'min': -500, 'max': 500, 'palette': ['blue', 'white', 'red']}, 'Difference')\n",
+            "    return m\n",
+            "\n",
+            "m = detect_changes()\n",
+            "m"
+        ]
+    }
+]
+
+# 7. VECTOR/NETWORK ANALYSIS (GIS)
+CODE_VECTOR = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import ee\n",
+            "import geemap\n",
+            "\n",
+            "try:\n",
+            "    ee.Initialize()\n",
+            "except:\n",
+            "    ee.Authenticate()\n",
+            "    ee.Initialize()"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Vector Analysis\n",
+            "def analyze_vectors():\n",
+            "    # Load Roads (using TIGER lines as proxy for demo)\n",
+            "    roads = ee.FeatureCollection('TIGER/2016/Roads').filterBounds(ee.Geometry.Point([-73.9, 40.7]).buffer(10000))\n",
+            "    \n",
+            "    # Buffer Analysis (Service Areas)\n",
+            "    buffers = roads.map(lambda f: f.buffer(500))\n",
+            "    \n",
+            "    m = geemap.Map(center=[40.7, -73.9], zoom=12)\n",
+            "    m.addLayer(roads, {'color': 'blue'}, 'Roads')\n",
+            "    m.addLayer(buffers, {'color': 'red', 'opacity': 0.3}, 'Service Buffers')\n",
+            "    return m\n",
+            "\n",
+            "m = analyze_vectors()\n",
+            "m"
+        ]
+    }
+]
+
+# 8. OPTIMIZATION/SIMULATION (Sustainability)
+CODE_OPTIMIZATION = [
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "import pandas as pd\n",
+            "import numpy as np\n",
+            "import matplotlib.pyplot as plt\n",
+            "import seaborn as sns\n",
+            "\n",
+            "plt.style.use('seaborn-v0_8-paper')"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "metadata": {},
+        "source": [
+            "# Simulation Engine\n",
+            "def run_simulation(n_scenarios=5):\n",
+            "    results = []\n",
+            "    for i in range(n_scenarios):\n",
+            "        # Scenario parameters\n",
+            "        efficiency = 0.8 + (i * 0.05)\n",
+            "        cost = 1000 * (1.2 - (i * 0.05))\n",
+            "        impact = 500 * (1 - (i * 0.1))\n",
+            "        \n",
+            "        results.append({\n",
+            "            'Scenario': f'Scenario {{i+1}}',\n",
+            "            'Efficiency': efficiency,\n",
+            "            'Cost': cost,\n",
+            "            'Environmental_Impact': impact\n",
+            "        })\n",
+            "    return pd.DataFrame(results)\n",
+            "\n",
+            "df = run_simulation()\n",
+            "print('Simulation Results:')\n",
+            "display(df)\n",
+            "\n",
+            "# Trade-off Visualization\n",
+            "fig, ax1 = plt.subplots(figsize=(10,6))\n",
+            "sns.barplot(x='Scenario', y='Cost', data=df, ax=ax1, color='lightblue', alpha=0.6)\n",
+            "ax2 = ax1.twinx()\n",
+            "sns.lineplot(x='Scenario', y='Efficiency', data=df, ax=ax2, color='green', marker='o', linewidth=3)\n",
+            "plt.title('Cost vs Efficiency Trade-off')\n",
+            "plt.show()"
+        ]
+    }
+]
+
+# ======================================================================================
+# USE CASE MAPPING
+# ======================================================================================
+
 FULL_USE_CASES = {
     "GIS analytics": [
-        {"name": "Flood_Risk_Assessment", "title": "Flood Risk Assessment", "description": "Identify flood-prone areas using elevation data.", "objectives": ["Analyze elevation", "Identify flood zones"], "data_points": 5000, "key_findings": ["15% high risk", "Low-lying areas vulnerable"], "recommendations": ["Build barriers", "Improve drainage"]},
-        {"name": "Retail_Site_Selection", "title": "Optimal Site Selection for Retail", "description": "Multi-criteria analysis for retail.", "objectives": ["Analyze demographics", "Assess competition"], "data_points": 200, "key_findings": ["Site A optimal", "High foot traffic"], "recommendations": ["Select Site A", "Target young adults"]},
-        {"name": "Transportation_Network_Analysis", "title": "Transportation Network Analysis", "description": "Analyze road networks.", "objectives": ["Map connectivity", "Find bottlenecks"], "data_points": 1000, "key_findings": ["Congestion in CBD", "Poor transit coverage"], "recommendations": ["Expand bus routes", "Smart signals"]},
-        {"name": "Land_Use_Change_Detection", "title": "Land Use Change Detection", "description": "Monitor urban sprawl.", "objectives": ["Detect changes", "Quantify growth"], "data_points": 10000, "key_findings": ["Urban +23%", "Forest -12%"], "recommendations": ["Green belts", "Zoning laws"]},
-        {"name": "Population_Density_Mapping", "title": "Population Density Mapping", "description": "Map population distribution.", "objectives": ["Map density", "Identify clusters"], "data_points": 500, "key_findings": ["High density in center", "Suburban growth"], "recommendations": ["New schools", "Upgrade utilities"]},
-        {"name": "Wildfire_Risk_Modeling", "title": "Wildfire Risk Modeling", "description": "Assess wildfire risk.", "objectives": ["Model risk", "Identify zones"], "data_points": 8000, "key_findings": ["High risk in south", "Dry vegetation"], "recommendations": ["Firebreaks", "Early warning"]},
-        {"name": "Agricultural_Suitability_Analysis", "title": "Agricultural Suitability Analysis", "description": "Identify crop zones.", "objectives": ["Analyze soil", "Map suitability"], "data_points": 3000, "key_findings": ["Wheat suitable in North", "Water scarcity"], "recommendations": ["Drip irrigation", "Crop rotation"]},
-        {"name": "Spatial_Clustering_Analysis", "title": "Spatial Clustering Analysis", "description": "Identify hotspots.", "objectives": ["Detect clusters", "Hotspot analysis"], "data_points": 2500, "key_findings": ["Crime hotspots found", "Nighttime peak"], "recommendations": ["More patrols", "Better lighting"]},
-        {"name": "Viewshed_Analysis", "title": "Viewshed Analysis", "description": "Analyze visibility.", "objectives": ["Calculate viewshed", "Assess impact"], "data_points": 5000, "key_findings": ["Tower visible from 40%", "Alt site better"], "recommendations": ["Move tower", "Reduce height"]},
-        {"name": "Service_Area_Analysis", "title": "Service Area Analysis", "description": "Analyze service coverage.", "objectives": ["Isochrone maps", "Find gaps"], "data_points": 300, "key_findings": ["East underserved", "78% coverage"], "recommendations": ["New facility", "Mobile units"]},
-        {"name": "Geospatial_Time_Series_Analysis", "title": "Geospatial Time Series Analysis", "description": "Track patterns over time.", "objectives": ["Analyze trends", "Forecast"], "data_points": 12000, "key_findings": ["Traffic up 34%", "Shift east"], "recommendations": ["Upgrade roads", "Flexible work"]}
+        {"name": "Flood_Risk_Assessment", "archetype": "RASTER_RISK", "title": "Flood Risk Assessment", "description": "Identify flood-prone areas using elevation and slope.", "params": {}},
+        {"name": "Wildfire_Risk_Modeling", "archetype": "RASTER_RISK", "title": "Wildfire Risk Modeling", "description": "Assess wildfire risk based on vegetation and temp.", "params": {}},
+        {"name": "Agricultural_Suitability_Analysis", "archetype": "RASTER_RISK", "title": "Agricultural Suitability", "description": "Map optimal crop zones.", "params": {}},
+        {"name": "Land_Use_Change_Detection", "archetype": "CHANGE_DETECTION", "title": "Land Use Change Detection", "description": "Monitor urban expansion.", "params": {"dataset_id": "COPERNICUS/S2", "band_name": "B8", "vis_params": "{'min': 0, 'max': 3000}"}},
+        {"name": "Urban_Heat_Island_Analysis", "archetype": "CHANGE_DETECTION", "title": "Urban Heat Island Analysis", "description": "Analyze thermal hotspots.", "params": {"dataset_id": "MODIS/006/MOD11A2", "band_name": "LST_Day_1km", "vis_params": "{'min': 14000, 'max': 16000, 'palette': ['blue', 'red']}"}},
+        {"name": "Geospatial_Time_Series_Analysis", "archetype": "CHANGE_DETECTION", "title": "Geospatial Time Series", "description": "Track vegetation health over time.", "params": {"dataset_id": "MODIS/006/MOD13Q1", "band_name": "NDVI", "vis_params": "{'min': 0, 'max': 8000, 'palette': ['brown', 'green']}"}},
+        {"name": "Transportation_Network_Analysis", "archetype": "VECTOR", "title": "Transportation Network Analysis", "description": "Analyze road connectivity.", "params": {}},
+        {"name": "Service_Area_Analysis", "archetype": "VECTOR", "title": "Service Area Analysis", "description": "Map facility coverage.", "params": {}},
+        {"name": "Retail_Site_Selection", "archetype": "RASTER_RISK", "title": "Retail Site Selection", "description": "Find optimal store locations.", "params": {}},
+        {"name": "Population_Density_Mapping", "archetype": "RASTER_RISK", "title": "Population Density Mapping", "description": "Visualize demographic shifts.", "params": {}},
+        {"name": "Spatial_Clustering_Analysis", "archetype": "VECTOR", "title": "Spatial Clustering", "description": "Identify incident clusters.", "params": {}},
+        {"name": "Viewshed_Analysis", "archetype": "RASTER_RISK", "title": "Viewshed Analysis", "description": "Calculate visibility.", "params": {}}
     ],
     "Sustainability Data Analytics": [
-        {"name": "Carbon_Footprint_Assessment", "title": "Carbon Footprint Assessment", "description": "Calculate emissions.", "objectives": ["Quantify scopes", "Benchmark"], "data_points": 1000, "key_findings": ["Scope 3 high", "Transport impact"], "recommendations": ["Renewables", "Supplier engagement"]},
-        {"name": "Renewable_Energy_Potential", "title": "Renewable Energy Potential", "description": "Assess solar/wind.", "objectives": ["Calculate potential", "ROI analysis"], "data_points": 365, "key_findings": ["Solar viable", "6yr payback"], "recommendations": ["Install solar", "Battery storage"]},
-        {"name": "Water_Resource_Management", "title": "Water Resource Management", "description": "Analyze water usage.", "objectives": ["Track usage", "Find leaks"], "data_points": 730, "key_findings": ["Summer peak", "Leaks found"], "recommendations": ["Smart meters", "Fix leaks"]},
-        {"name": "Waste_Management_Optimization", "title": "Waste Management Optimization", "description": "Optimize waste routes.", "objectives": ["Optimize routes", "Recycling rate"], "data_points": 500, "key_findings": ["Low recycling", "Inefficient routes"], "recommendations": ["Route opt", "Education"]},
-        {"name": "Sustainable_Supply_Chain", "title": "Sustainable Supply Chain", "description": "Track supply chain impact.", "objectives": ["Map emissions", "Supplier score"], "data_points": 150, "key_findings": ["Transport high", "Packaging waste"], "recommendations": ["Local sourcing", "Green packaging"]},
-        {"name": "Air_Quality_Monitoring", "title": "Air Quality Monitoring", "description": "Monitor pollution.", "objectives": ["Track PM2.5", "Health impact"], "data_points": 8760, "key_findings": ["High PM2.5", "Traffic source"], "recommendations": ["Low emission zone", "Public transit"]},
-        {"name": "Biodiversity_Impact_Assessment", "title": "Biodiversity Impact Assessment", "description": "Assess habitat impact.", "objectives": ["Map species", "Fragmentation"], "data_points": 450, "key_findings": ["Habitat loss", "Species risk"], "recommendations": ["Mitigation area", "Wildlife crossing"]},
-        {"name": "Circular_Economy_Metrics", "title": "Circular Economy Metrics", "description": "Track circularity.", "objectives": ["Calc circularity", "Lifecycle"], "data_points": 200, "key_findings": ["Low circularity", "Virgin materials"], "recommendations": ["Redesign", "Take-back program"]},
-        {"name": "ESG_Performance_Scoring", "title": "ESG Performance Scoring", "description": "Score ESG metrics.", "objectives": ["Score pillars", "Benchmark"], "data_points": 85, "key_findings": ["Good environmental", "Weak social"], "recommendations": ["Diversity", "Reporting"]},
-        {"name": "Green_Building_Certification", "title": "Green Building Certification", "description": "Analyze for LEED.", "objectives": ["Assess gaps", "Cost benefit"], "data_points": 365, "key_findings": ["Silver level", "Energy good"], "recommendations": ["Solar", "Water fixtures"]},
-        {"name": "Ocean_Pollution_Tracking", "title": "Ocean Pollution Tracking", "description": "Track marine debris.", "objectives": ["Track sources", "Cleanup"], "data_points": 1200, "key_findings": ["Plastics high", "River source"], "recommendations": ["Traps", "Ban plastics"]},
-        {"name": "Sustainable_Agriculture_Metrics", "title": "Sustainable Agriculture Metrics", "description": "Farm sustainability.", "objectives": ["Soil health", "Water use"], "data_points": 500, "key_findings": ["Soil poor", "Water waste"], "recommendations": ["Cover crops", "Drip irrigation"]}
+        {"name": "Carbon_Footprint_Assessment", "archetype": "OPTIMIZATION", "title": "Carbon Footprint Assessment", "description": "Track and optimize emissions.", "params": {}},
+        {"name": "Renewable_Energy_Potential", "archetype": "OPTIMIZATION", "title": "Renewable Energy Potential", "description": "Simulate energy output.", "params": {}},
+        {"name": "Water_Resource_Management", "archetype": "FORECASTING", "title": "Water Resource Management", "description": "Forecast water usage.", "params": {"target": "Water_Usage_Liters", "data_points": 730}},
+        {"name": "Waste_Management_Optimization", "archetype": "OPTIMIZATION", "title": "Waste Management Optimization", "description": "Optimize collection routes.", "params": {}},
+        {"name": "Sustainable_Supply_Chain", "archetype": "CLASSIFICATION", "title": "Sustainable Supply Chain", "description": "Classify supplier risk.", "params": {"feat1": "Distance", "feat2": "Emissions", "feat3": "Cost", "feat4": "Region", "target": "High_Risk", "data_points": 500}},
+        {"name": "Air_Quality_Monitoring", "archetype": "FORECASTING", "title": "Air Quality Monitoring", "description": "Predict PM2.5 levels.", "params": {"target": "PM2.5_Level", "data_points": 1000}},
+        {"name": "Biodiversity_Impact_Assessment", "archetype": "OPTIMIZATION", "title": "Biodiversity Impact Assessment", "description": "Assess habitat scenarios.", "params": {}},
+        {"name": "Circular_Economy_Metrics", "archetype": "OPTIMIZATION", "title": "Circular Economy Metrics", "description": "Track material loops.", "params": {}},
+        {"name": "ESG_Performance_Scoring", "archetype": "CLUSTERING", "title": "ESG Performance Scoring", "description": "Cluster companies by ESG score.", "params": {"feat1": "Env_Score", "feat2": "Social_Score", "feat3": "Gov_Score", "data_points": 200}},
+        {"name": "Green_Building_Certification", "archetype": "CLASSIFICATION", "title": "Green Building Certification", "description": "Predict certification success.", "params": {"feat1": "Energy_Use", "feat2": "Water_Use", "feat3": "Materials", "feat4": "Type", "target": "Certified", "data_points": 300}},
+        {"name": "Ocean_Pollution_Tracking", "archetype": "FORECASTING", "title": "Ocean Pollution Tracking", "description": "Forecast debris accumulation.", "params": {"target": "Debris_Tons", "data_points": 500}},
+        {"name": "Sustainable_Agriculture_Metrics", "archetype": "HYPOTHESIS", "title": "Sustainable Agriculture", "description": "Compare crop yields.", "params": {"metric": "Yield_Per_Hectare", "data_points": 200}}
     ],
     "Data analytics": [
-        {"name": "Customer_Segmentation", "title": "Customer Segmentation", "description": "RFM Analysis.", "objectives": ["Segment users", "Target marketing"], "data_points": 5000, "key_findings": ["5 segments", "Champions high value"], "recommendations": ["VIP program", "Win-back"]},
-        {"name": "Sales_Forecasting", "title": "Sales Forecasting", "description": "Predict revenue.", "objectives": ["Forecast sales", "Trends"], "data_points": 1095, "key_findings": ["Q4 peak", "Growth 12%"], "recommendations": ["Stock up", "Promotions"]},
-        {"name": "Marketing_Campaign_Performance", "title": "Marketing Campaign Performance", "description": "Analyze ROI.", "objectives": ["Calc ROI", "Channel mix"], "data_points": 25, "key_findings": ["Email best", "Social low"], "recommendations": ["More email", "Fix social"]},
-        {"name": "Product_Recommendation_System", "title": "Product Recommendation System", "description": "Recsys engine.", "objectives": ["Collab filtering", "Increase sales"], "data_points": 50000, "key_findings": ["Basket size up", "Personalization works"], "recommendations": ["Deploy widget", "Email recs"]},
-        {"name": "Financial_Risk_Assessment", "title": "Financial Risk Assessment", "description": "Credit scoring.", "objectives": ["Predict default", "Risk score"], "data_points": 10000, "key_findings": ["Debt ratio key", "Accuracy 89%"], "recommendations": ["Stricter rules", "Tiered rates"]},
-        {"name": "Employee_Attrition_Prediction", "title": "Employee Attrition Prediction", "description": "Predict turnover.", "objectives": ["Predict churn", "Retention"], "data_points": 1470, "key_findings": ["Sales high churn", "Overtime cause"], "recommendations": ["Reduce overtime", "Career paths"]},
-        {"name": "Inventory_Optimization", "title": "Inventory Optimization", "description": "Optimize stock.", "objectives": ["Forecast demand", "Safety stock"], "data_points": 500, "key_findings": ["Stockouts high", "Excess stock"], "recommendations": ["Reorder points", "ABC analysis"]},
-        {"name": "AB_Testing_Analysis", "title": "A/B Testing Analysis", "description": "Analyze experiments.", "objectives": ["Hypothesis test", "Significance"], "data_points": 10000, "key_findings": ["Variant B wins", "Sig p-value"], "recommendations": ["Deploy B", "New test"]},
-        {"name": "Sentiment_Analysis", "title": "Sentiment Analysis", "description": "Analyze text.", "objectives": ["Classify sentiment", "Topics"], "data_points": 15000, "key_findings": ["Positive 70%", "Returns issue"], "recommendations": ["Fix returns", "Promote speed"]},
-        {"name": "Demand_Forecasting", "title": "Demand Forecasting", "description": "Predict demand.", "objectives": ["ML forecast", "Seasonality"], "data_points": 730, "key_findings": ["Seasonality strong", "Promo effect"], "recommendations": ["Plan ahead", "Share data"]},
-        {"name": "Price_Optimization", "title": "Price Optimization", "description": "Optimize pricing.", "objectives": ["Elasticity", "Revenue max"], "data_points": 1000, "key_findings": ["Elastic demand", "Price drop works"], "recommendations": ["Dynamic pricing", "Discounts"]},
-        {"name": "Fraud_Detection", "title": "Fraud Detection", "description": "Detect fraud.", "objectives": ["Anomaly detection", "Real-time"], "data_points": 284807, "key_findings": ["0.17% fraud", "High precision"], "recommendations": ["Real-time block", "Review queue"]}
+        {"name": "Customer_Segmentation", "archetype": "CLUSTERING", "title": "Customer Segmentation", "description": "Segment users by behavior.", "params": {"feat1": "Recency", "feat2": "Frequency", "feat3": "Monetary", "data_points": 2000}},
+        {"name": "Sales_Forecasting", "archetype": "FORECASTING", "title": "Sales Forecasting", "description": "Predict future revenue.", "params": {"target": "Revenue", "data_points": 1095}},
+        {"name": "Marketing_Campaign_Performance", "archetype": "HYPOTHESIS", "title": "Marketing Campaign Analysis", "description": "A/B test campaigns.", "params": {"metric": "Conversion_Rate", "data_points": 5000}},
+        {"name": "Product_Recommendation_System", "archetype": "CLUSTERING", "title": "Product Recommendation", "description": "Group similar items.", "params": {"feat1": "Price", "feat2": "Rating", "feat3": "Popularity", "data_points": 500}},
+        {"name": "Financial_Risk_Assessment", "archetype": "CLASSIFICATION", "title": "Financial Risk Assessment", "description": "Predict credit default.", "params": {"feat1": "Income", "feat2": "Debt", "feat3": "Credit_Score", "feat4": "Employment", "target": "Default", "data_points": 5000}},
+        {"name": "Employee_Attrition_Prediction", "archetype": "CLASSIFICATION", "title": "Employee Attrition Prediction", "description": "Predict turnover.", "params": {"feat1": "Satisfaction", "feat2": "Tenure", "feat3": "Salary", "feat4": "Dept", "target": "Left", "data_points": 1500}},
+        {"name": "Inventory_Optimization", "archetype": "FORECASTING", "title": "Inventory Optimization", "description": "Forecast stock levels.", "params": {"target": "Stock_Level", "data_points": 730}},
+        {"name": "AB_Testing_Analysis", "archetype": "HYPOTHESIS", "title": "A/B Testing Analysis", "description": "Compare page variants.", "params": {"metric": "Click_Through_Rate", "data_points": 10000}},
+        {"name": "Sentiment_Analysis", "archetype": "CLASSIFICATION", "title": "Sentiment Analysis", "description": "Classify text sentiment.", "params": {"feat1": "Word_Count", "feat2": "Polarity", "feat3": "Subjectivity", "feat4": "Source", "target": "Positive_Sentiment", "data_points": 2000}},
+        {"name": "Demand_Forecasting", "archetype": "FORECASTING", "title": "Demand Forecasting", "description": "Predict product demand.", "params": {"target": "Units_Sold", "data_points": 1000}},
+        {"name": "Price_Optimization", "archetype": "OPTIMIZATION", "title": "Price Optimization", "description": "Simulate pricing scenarios.", "params": {}},
+        {"name": "Fraud_Detection", "archetype": "CLASSIFICATION", "title": "Fraud Detection", "description": "Detect fraudulent txns.", "params": {"feat1": "Amount", "feat2": "Time_Diff", "feat3": "Location_Score", "feat4": "Type", "target": "Is_Fraud", "data_points": 10000}}
     ]
 }
 
-# GIS Config Mapping
-GIS_CONFIGS = {
-    "Flood_Risk_Assessment": {"dataset": "USGS/SRTMGL1_003", "band": "elevation", "vis": "{'min': 0, 'max': 1000, 'palette': ['green', 'yellow', 'red']}"},
-    "Urban_Heat_Island_Analysis": {"dataset": "MODIS/006/MOD11A2", "band": "LST_Day_1km", "vis": "{'min': 14000, 'max': 16000, 'palette': ['blue', 'green', 'red']}"},
-    "Land_Use_Change_Detection": {"dataset": "COPERNICUS/S2", "band": "B4", "vis": "{'min': 0, 'max': 3000}"},
-    "Wildfire_Risk_Modeling": {"dataset": "MODIS/006/MCD64A1", "band": "Burn_Date", "vis": "{'palette': ['red']}"},
-    "Agricultural_Suitability_Analysis": {"dataset": "USDA/NASS/CDL", "band": "cropland", "vis": "{}"},
-    "Population_Density_Mapping": {"dataset": "CIESIN/GPWv411/GPW_POP_DENS", "band": "population_density", "vis": "{'palette': ['white', 'red']}"},
-    "Viewshed_Analysis": {"dataset": "USGS/SRTMGL1_003", "band": "elevation", "vis": "{}"},
-    "Service_Area_Analysis": {"dataset": "OpenStreetMap", "band": "roads", "vis": "{}"},
-    "Transportation_Network_Analysis": {"dataset": "OpenStreetMap", "band": "roads", "vis": "{}"},
-    "Retail_Site_Selection": {"dataset": "WorldPop", "band": "population", "vis": "{}"},
-    "Spatial_Clustering_Analysis": {"dataset": "Crime_Data", "band": "incidents", "vis": "{}"},
-    "Geospatial_Time_Series_Analysis": {"dataset": "Traffic_Data", "band": "flow", "vis": "{}"}
-}
+# ======================================================================================
+# GENERATOR LOGIC
+# ======================================================================================
 
 def generate_notebook_content(domain, use_case):
-    """Generates notebook JSON content based on domain template."""
+    """Generates notebook content based on archetype."""
+    archetype = use_case['archetype']
+    params = use_case['params']
     
-    # Prepare strings for injection
-    findings_print = "\\n".join([f"print('- {f}')" for f in use_case['key_findings']])
-    recommendations_print = "\\n".join([f"print('- {r}')" for r in use_case['recommendations']])
-    
-    if domain == "GIS analytics":
-        config = GIS_CONFIGS.get(use_case['name'], {"dataset": "USGS/SRTMGL1_003", "band": "elevation", "vis": "{}"})
-        template = GIS_NOTEBOOK_TEMPLATE
-        # Inject GIS specific vars
-        cells_str = json.dumps(template['cells'])
-        cells_str = cells_str.replace('{title}', use_case['title'])
-        cells_str = cells_str.replace('{description}', use_case['description'])
-        cells_str = cells_str.replace('{dataset_id}', config['dataset'])
-        cells_str = cells_str.replace('{band_name}', config['band'])
-        cells_str = cells_str.replace('{vis_params}', config['vis'])
-        cells_str = cells_str.replace('{findings_print}', findings_print)
-        cells_str = cells_str.replace('{recommendations_print}', recommendations_print)
-        cells = json.loads(cells_str)
+    # Select Template
+    if archetype == "CLASSIFICATION":
+        template_cells = CODE_CLASSIFICATION
+    elif archetype == "FORECASTING":
+        template_cells = CODE_FORECASTING
+    elif archetype == "CLUSTERING":
+        template_cells = CODE_CLUSTERING
+    elif archetype == "HYPOTHESIS":
+        template_cells = CODE_HYPOTHESIS
+    elif archetype == "RASTER_RISK":
+        template_cells = CODE_RASTER_RISK
+    elif archetype == "CHANGE_DETECTION":
+        template_cells = CODE_CHANGE_DETECTION
+    elif archetype == "VECTOR":
+        template_cells = CODE_VECTOR
+    elif archetype == "OPTIMIZATION":
+        template_cells = CODE_OPTIMIZATION
+    else:
+        template_cells = CODE_CLASSIFICATION # Default
         
-    elif domain == "Sustainability Data Analytics":
-        template = SUSTAINABILITY_NOTEBOOK_TEMPLATE
-        cells_str = json.dumps(template['cells'])
-        cells_str = cells_str.replace('{title}', use_case['title'])
-        cells_str = cells_str.replace('{description}', use_case['description'])
-        cells_str = cells_str.replace('{data_points}', str(use_case['data_points']))
-        cells_str = cells_str.replace('{findings_print}', findings_print)
-        cells_str = cells_str.replace('{recommendations_print}', recommendations_print)
-        cells = json.loads(cells_str)
-        
-    else: # Data Analytics
-        template = DATA_NOTEBOOK_TEMPLATE
-        cells_str = json.dumps(template['cells'])
-        cells_str = cells_str.replace('{title}', use_case['title'])
-        cells_str = cells_str.replace('{description}', use_case['description'])
-        cells_str = cells_str.replace('{data_points}', str(use_case['data_points']))
-        cells_str = cells_str.replace('{findings_print}', findings_print)
-        cells_str = cells_str.replace('{recommendations_print}', recommendations_print)
-        cells = json.loads(cells_str)
-
-    notebook = {
-        "cells": cells,
-        "metadata": template['metadata'],
-        "nbformat": template['nbformat'],
-        "nbformat_minor": template['nbformat_minor']
+    # Header Cell
+    header_cell = {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            f"# {use_case['title']}\n\n",
+            f"## 📊 Business Context\n{use_case['description']}\n\n",
+            f"**Analytical Approach:** {archetype.replace('_', ' ').title()}\n",
+            "This notebook utilizes advanced analytics to derive actionable insights."
+        ]
     }
+    
+    # Process Cells
+    final_cells = [header_cell]
+    for cell in template_cells:
+        new_source = []
+        for line in cell['source']:
+            # Inject Params
+            for k, v in params.items():
+                line = line.replace(f'{{{k}}}', str(v))
+            new_source.append(line)
+        
+        final_cells.append({
+            "cell_type": cell['cell_type'],
+            "metadata": cell['metadata'],
+            "source": new_source
+        })
+        
+    # Construct Notebook
+    notebook = {
+        "cells": final_cells,
+        "metadata": {
+            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "language_info": {"codemirror_mode": {"name": "ipython", "version": 3}, "file_extension": ".py", "mimetype": "text/x-python", "name": "python", "nbconvert_exporter": "python", "pygments_lexer": "ipython3", "version": "3.8.0"}
+        },
+        "nbformat": 4,
+        "nbformat_minor": 4
+    }
+    
     return json.dumps(notebook, indent=1)
 
 def generate_readme(domain, use_case):
-    """Generate README for a use case"""
-    objectives_text = "\\n".join([f'- {obj}' for obj in use_case['objectives']])
-    findings_text = "\\n".join([f'{i+1}. {finding}' for i, finding in enumerate(use_case['key_findings'])])
-    recommendations_list = []
-    for i, rec in enumerate(use_case['recommendations']):
-        recommendations_list.append(f'**{i+1}. {rec}**\\n')
-    recommendations_text = "\\n".join(recommendations_list)
-    
-    readme = f"""# {use_case['title']}
-
-## 📋 Project Overview
-
-{use_case['description']}
-
-## 🎯 Objectives
-
-{objectives_text}
-
-## 📊 Key Findings
-
-{findings_text}
-
-## 💡 Recommendations
-
-{recommendations_text}
-
-## 🛠️ Technologies Used
-
-- **Python 3.8+**
-- **Domain**: {domain}
-- **Libraries**: NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Geemap (for GIS)
-
-## 📁 Project Structure
-
-```
-{use_case['name']}/
-├── analysis.ipynb          # Main Jupyter notebook with complete analysis
-├── README.md              # This file
-└── outputs/               # Generated visualizations
-```
-
-## 🚀 How to Run
-
-1. Install required dependencies:
-```bash
-pip install numpy pandas matplotlib seaborn scipy scikit-learn jupyter geemap
-```
-
-2. Launch Jupyter Notebook:
-```bash
-jupyter notebook analysis.ipynb
-```
-
-3. Run all cells to generate the analysis and visualizations
-
----
-
-**Author**: Damilola  
-**Domain**: {domain}  
-**Date**: 2025  
-**License**: MIT
-"""
-    return readme
+    return f"# {use_case['title']}\n\n{use_case['description']}\n\nGenerated using {use_case['archetype']} archetype."
 
 def main():
-    print("Generating Professional Portfolio...")
+    print("Generating Archetype-Based Portfolio...")
     
     for domain, cases in FULL_USE_CASES.items():
         print(f"Processing {domain}...")
@@ -755,7 +649,7 @@ def main():
             with open(os.path.join(case_path, "README.md"), 'w', encoding='utf-8') as f:
                 f.write(readme_content)
                 
-            print(f"  - Created {use_case['name']}")
+            print(f"  - Created {use_case['name']} ({use_case['archetype']})")
 
 if __name__ == "__main__":
     main()
