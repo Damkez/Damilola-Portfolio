@@ -19,10 +19,8 @@ Track environmental impact across supply chain operations
 ## 🛠️ Technologies Used
 
 - **Python 3.8+**
-- **Data Analysis**: NumPy, Pandas
-- **Visualization**: Matplotlib, Seaborn
-- **Statistical Analysis**: SciPy
-- **Machine Learning**: Scikit-learn
+- **Domain**: Sustainability Data Analytics
+- **Libraries**: NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Geemap (for GIS)
 
 ## 📁 Project Structure
 
@@ -37,7 +35,7 @@ Sustainable_Supply_Chain/
 
 1. Install required dependencies:
 ```bash
-pip install numpy pandas matplotlib seaborn scipy scikit-learn jupyter
+pip install numpy pandas matplotlib seaborn scipy scikit-learn jupyter geemap
 ```
 
 2. Launch Jupyter Notebook:
@@ -46,13 +44,6 @@ jupyter notebook analysis.ipynb
 ```
 
 3. Run all cells to generate the analysis and visualizations
-
-## 📈 Expected Outcomes
-
-- Comprehensive analysis with statistical insights
-- Data visualizations and charts
-- Actionable recommendations
-- Support for strategic decision-making
 
 ---
 
