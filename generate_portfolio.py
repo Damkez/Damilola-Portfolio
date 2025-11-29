@@ -15,6 +15,7 @@ GIS_NOTEBOOK_TEMPLATE = {
     "cells": [
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": [
                 "# {title}\n\n",
                 "## 🌍 Business Context\n",
@@ -30,6 +31,7 @@ GIS_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Import Required Libraries\n",
                 "import ee\n",
@@ -54,6 +56,7 @@ GIS_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Configuration & Constants\n",
                 "AOI_COORDS = [9.0820, 8.6753] # Nigeria Center (Lat, Lon)\n",
@@ -73,6 +76,7 @@ GIS_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# ---------------------------------------------------------------------------------------\n",
                 "# GeoSpatialAnalyzer Class\n",
@@ -131,6 +135,7 @@ GIS_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Initialize Analyzer\n",
                 "analyzer = GeoSpatialAnalyzer(AOI, DATASET_ID, BAND_NAME, VIS_PARAMS)"
@@ -138,11 +143,13 @@ GIS_NOTEBOOK_TEMPLATE = {
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 📊 Statistical Analysis & Trends"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Calculate Trends\n",
                 "df_trends = analyzer.analyze_trends(YEARS)\n",
@@ -161,11 +168,13 @@ GIS_NOTEBOOK_TEMPLATE = {
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 🗺️ Interactive Map Visualization"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Display Map for Latest Year\n",
                 "m = analyzer.create_interactive_map(2024)\n",
@@ -174,11 +183,13 @@ GIS_NOTEBOOK_TEMPLATE = {
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 💡 Key Findings & Recommendations"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "print('KEY FINDINGS:')\n",
                 "{findings_print}\n\n",
@@ -200,6 +211,7 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
     "cells": [
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": [
                 "# {title}\n\n",
                 "## 🌿 Business Context\n",
@@ -215,6 +227,7 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Import Required Libraries\n",
                 "import pandas as pd\n",
@@ -231,6 +244,7 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# ---------------------------------------------------------------------------------------\n",
                 "# Data Generation (Simulating Enterprise Data)\n",
@@ -263,6 +277,7 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# ---------------------------------------------------------------------------------------\n",
                 "# SustainabilityAnalyzer Class\n",
@@ -307,6 +322,7 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Initialize and Run Analysis\n",
                 "analyzer = SustainabilityAnalyzer(data)\n",
@@ -328,22 +344,26 @@ SUSTAINABILITY_NOTEBOOK_TEMPLATE = {
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 📈 Visualization Dashboard"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "analyzer.plot_trends()"
             ]
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 💡 Key Findings & Recommendations"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "print('KEY FINDINGS:')\n",
                 "{findings_print}\n\n",
@@ -365,6 +385,7 @@ DATA_NOTEBOOK_TEMPLATE = {
     "cells": [
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": [
                 "# {title}\n\n",
                 "## 📊 Business Context\n",
@@ -380,6 +401,7 @@ DATA_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Import Required Libraries\n",
                 "import pandas as pd\n",
@@ -400,6 +422,7 @@ DATA_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# ---------------------------------------------------------------------------------------\n",
                 "# Data Generation (Synthetic Dataset)\n",
@@ -434,6 +457,7 @@ DATA_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# ---------------------------------------------------------------------------------------\n",
                 "# PredictiveModeler Class\n",
@@ -489,6 +513,7 @@ DATA_NOTEBOOK_TEMPLATE = {
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "# Initialize and Run Modeling Pipeline\n",
                 "modeler = PredictiveModeler(data, 'Target')\n",
@@ -506,22 +531,26 @@ DATA_NOTEBOOK_TEMPLATE = {
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 🔍 Feature Importance Analysis"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "modeler.plot_feature_importance()"
             ]
         },
         {
             "cell_type": "markdown",
+            "metadata": {},
             "source": ["## 💡 Key Findings & Recommendations"]
         },
         {
             "cell_type": "code",
             "execution_count": None,
+            "metadata": {},
             "source": [
                 "print('KEY FINDINGS:')\n",
                 "{findings_print}\n\n",
@@ -539,16 +568,6 @@ DATA_NOTEBOOK_TEMPLATE = {
 }
 
 # --- USE CASE DEFINITIONS ---
-USE_CASES = {
-    "GIS analytics": [
-        {"name": "Flood_Risk_Assessment", "title": "Flood Risk Assessment", "description": "Identify flood-prone areas using elevation data.", "objectives": ["Analyze elevation", "Identify flood zones"], "data_points": 5000, "key_findings": ["15% high risk", "Low-lying areas vulnerable"], "recommendations": ["Build barriers", "Improve drainage"]},
-        {"name": "Urban_Heat_Island_Analysis", "title": "Urban Heat Island Analysis", "description": "Analyze urban temperature patterns.", "objectives": ["Map LST", "Identify hotspots"], "data_points": 5000, "key_findings": ["City center +3C hotter", "Vegetation cools"], "recommendations": ["Plant trees", "Green roofs"]},
-        # ... (Add all other GIS cases here with simplified metadata for brevity in this script, but full content in generation)
-    ],
-    # ... (Other domains)
-}
-
-# Full Use Case Data (Re-using the detailed dictionary from previous version)
 FULL_USE_CASES = {
     "GIS analytics": [
         {"name": "Flood_Risk_Assessment", "title": "Flood Risk Assessment", "description": "Identify flood-prone areas using elevation data.", "objectives": ["Analyze elevation", "Identify flood zones"], "data_points": 5000, "key_findings": ["15% high risk", "Low-lying areas vulnerable"], "recommendations": ["Build barriers", "Improve drainage"]},
