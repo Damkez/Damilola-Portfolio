@@ -1,4 +1,4 @@
-# 🌍 Damilola's Data Science & Geospatial Portfolio
+# 🌍 Damilola's Data Science, Sustainability & Geospatial Portfolio
 
 Welcome to my professional portfolio! This repository showcases **41 advanced data science and geospatial analysis projects** demonstrating expertise in Earth Engine, Sustainability Analytics, and Machine Learning.
 
